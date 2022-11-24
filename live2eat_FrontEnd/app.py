@@ -9,8 +9,9 @@ st.set_page_config(
     layout="centered",  # wide
     initial_sidebar_state="auto")  # collapsed
 '''
-# Live2Eat Food Tracking
-Take the hard work out of tracking your food
+## Live2Eat Food Tracking
+#Take the hard work out of tracking your food
+
 '''
 
 data = 'https://youtu.be/YaHtE96uc2c'
