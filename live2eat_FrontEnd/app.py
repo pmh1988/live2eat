@@ -25,9 +25,7 @@ with st.container():
 
     with col1:
         st.text("Bak Chor Mee")
-        image = "https://static.streamlit.io/examples/cat.jpg"
-        new_image = image.resize((600, 400))
-        st.image(new_image)
+        st.image("https://static.streamlit.io/examples/cat.jpg")
 
     with col2:
         st.text("Kaya Toast")
