@@ -14,8 +14,9 @@ Take the hard work out of tracking your food
 
 '''
 option = st.selectbox(
-...     'How would you like to be contacted?',
-...     ('https://youtu.be/YaHtE96uc2c', 'https://youtu.be/YaHtE96uc2c', 'https://youtu.be/YaHtE96uc2c'))
+    'Please select a video',
+    ('https://youtu.be/YaHtE96uc2c', 'https://youtu.be/YaHtE96uc2c',
+     'https://youtu.be/YaHtE96uc2c'))
 
 st.video(option, format="video/mp4", start_time=0)
 
