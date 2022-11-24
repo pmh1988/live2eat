@@ -13,10 +13,10 @@ st.set_page_config(
 Take the hard work out of tracking your food
 
 '''
-option = st.selectbox(
-    'Please select a video',
-    ('https://youtu.be/YaHtE96uc2c', 'https://youtu.be/YaHtE96uc2c',
-     'https://youtu.be/YaHtE96uc2c'))
+option = st.selectbox('Please select a video',
+                      ('https://youtu.be/YaHtE96uc2c',
+                       'https://www.youtube.com/watch?v=42_j8Mk_haw',
+                       'https://www.youtube.com/watch?v=OdSGnEXMbTQ'))
 
 st.video(option, format="video/mp4", start_time=0)
 
