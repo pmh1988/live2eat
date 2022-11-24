@@ -20,19 +20,19 @@ st.video(data, format="video/mp4", start_time=0)
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    st.header("Bak Chor Mee")
+    st.subheader("Bak Chor Mee")
     st.image("https://static.streamlit.io/examples/cat.jpg")
 
 with col2:
-    st.header("Kaya Toast")
+    st.subheader("Kaya Toast")
     st.image("https://static.streamlit.io/examples/dog.jpg")
 
 with col3:
-    st.header("Mee Siam")
+    st.subheader("Mee Siam")
     st.image("https://static.streamlit.io/examples/owl.jpg")
 
 with col4:
-    st.header("Hokkien Mee")
+    st.subheader("Hokkien Mee")
     st.image("https://static.streamlit.io/examples/owl.jpg")
 
 # with st.form(key='params_for_api'):
