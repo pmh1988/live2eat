@@ -17,6 +17,9 @@ Take the hard work out of tracking your food
 data = 'https://youtu.be/YaHtE96uc2c'
 st.video(data, format="video/mp4", start_time=0)
 
+st.markdown('#')
+st.markdown('#')
+
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
@@ -34,6 +37,9 @@ with col3:
 with col4:
     st.subheader("Hokkien Mee")
     st.image("https://static.streamlit.io/examples/owl.jpg")
+
+st.markdown('#')
+st.markdown('#')
 
 # with st.form(key='params_for_api'):
 
