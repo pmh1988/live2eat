@@ -70,4 +70,6 @@ with col4:
 
 # pred = prediction['fare']
 
-st.header(f'Total Calories: ${round(pred, 2)}')
+# st.header(f'Total Calories: ${round(pred, 2)}')
+
+st.header("Total Calories : ")
