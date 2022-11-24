@@ -13,9 +13,9 @@ st.set_page_config(
 Take the hard work out of tracking your food
 
 '''
-
-data = 'https://youtu.be/YaHtE96uc2c'
-st.video(data, format="video/mp4", start_time=0)
+video_url = st.text_input('Please enter your video URL here', 'Life of Brian')
+# data = 'https://youtu.be/YaHtE96uc2c'
+st.video(video_url, format="video/mp4", start_time=0)
 
 st.markdown('#')
 st.markdown('#')
