@@ -13,14 +13,14 @@ st.set_page_config(
 Take the hard work out of tracking your food
 
 '''
-video_url = st.text_input('Please enter your video URL here', 'Life of Brian')
-# data = 'https://youtu.be/YaHtE96uc2c'
-st.video(video_url, format="video/mp4", start_time=0)
+option = st.selectbox(
+...     'How would you like to be contacted?',
+...     ('https://youtu.be/YaHtE96uc2c', 'https://youtu.be/YaHtE96uc2c', 'https://youtu.be/YaHtE96uc2c'))
+
+st.video(option, format="video/mp4", start_time=0)
 
 st.markdown('#')
 st.markdown('#')
-
-picture = st.camera_input("Take a picture")
 
 if picture:
     st.image(picture)
