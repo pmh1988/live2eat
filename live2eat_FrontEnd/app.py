@@ -4,7 +4,7 @@ import datetime
 import requests
 
 st.set_page_config(
-    page_title="Quick reference",  # => Quick reference - Streamlit
+    page_title="Live2eat",  # => Quick reference - Streamlit
     page_icon="🐍",
     layout="centered",  # wide
     initial_sidebar_state="auto")  # collapsed
