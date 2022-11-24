@@ -6,16 +6,16 @@ import requests
 st.set_page_config(
     page_title="Live2eat",  # => Quick reference - Streamlit
     page_icon="🐍",
-    layout="centered",  # wide
-    initial_sidebar_state="auto")  # collapsed
-'''
+    layout="centered",
+    te="auto")  # collapsed
+'''  # wide
+    initial_sidebar_sta
 # Live2Eat Food Tracking
 
 Take the hard work out of tracking your food
 '''
-data = #Food YouTube URL#
+data = 'https://youtu.be/YaHtE96uc2c'
 st.video(data, format="video/mp4", start_time=0)
-
 
 with st.form(key='params_for_api'):
 
