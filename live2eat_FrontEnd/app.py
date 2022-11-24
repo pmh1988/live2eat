@@ -20,6 +20,14 @@ st.video(data, format="video/mp4", start_time=0)
 st.markdown('#')
 st.markdown('#')
 
+picture = st.camera_input("Take a picture")
+
+if picture:
+    st.image(picture)
+
+st.markdown('#')
+st.markdown('#')
+
 with st.container():
     col1, col2, col3, col4 = st.columns(4)
 
