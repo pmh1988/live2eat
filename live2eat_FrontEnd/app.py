@@ -9,10 +9,13 @@ st.set_page_config(
     layout="centered",  # wide
     initial_sidebar_state="auto")  # collapsed
 '''
-# TaxiFareModel front
+# Live2Eat Food Tracking
 
-This front queries the Le Wagon [taxi fare model API](https://taxifare.lewagon.ai/predict?pickup_datetime=2012-10-06%2012:10:20&pickup_longitude=40.7614327&pickup_latitude=-73.9798156&dropoff_longitude=40.6513111&dropoff_latitude=-73.8803331&passenger_count=2)
+Take the hard work out of tracking your food
 '''
+data = #Food YouTube URL#
+st.video(data, format="video/mp4", start_time=0)
+
 
 with st.form(key='params_for_api'):
 
@@ -49,4 +52,4 @@ prediction = response.json()
 
 pred = prediction['fare']
 
-st.header(f'Fare amount: ${round(pred, 2)}')
+st.header(f'Calories Recorded: ${round(pred, 2)}')
