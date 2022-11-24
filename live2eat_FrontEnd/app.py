@@ -24,38 +24,38 @@ with st.container():
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        st.subheader("Bak Chor Mee")
+        st.text("Bak Chor Mee")
         st.image("https://static.streamlit.io/examples/cat.jpg")
 
     with col2:
-        st.subheader("Kaya Toast")
+        st.text("Kaya Toast")
         st.image("https://static.streamlit.io/examples/dog.jpg")
 
     with col3:
-        st.subheader("Mee Siam")
+        st.text("Mee Siam")
         st.image("https://static.streamlit.io/examples/owl.jpg")
 
     with col4:
-        st.subheader("Hokkien Mee")
+        st.text("Hokkien Mee")
         st.image("https://static.streamlit.io/examples/owl.jpg")
 
 with st.container():
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        st.subheader("Bak Chor Mee")
+        st.text("Bak Chor Mee")
         st.image("https://static.streamlit.io/examples/cat.jpg")
 
     with col2:
-        st.subheader("Kaya Toast")
+        st.text("Kaya Toast")
         st.image("https://static.streamlit.io/examples/dog.jpg")
 
     with col3:
-        st.subheader("Mee Siam")
+        st.text("Mee Siam")
         st.image("https://static.streamlit.io/examples/owl.jpg")
 
     with col4:
-        st.subheader("Hokkien Mee")
+        st.text("Hokkien Mee")
         st.image("https://static.streamlit.io/examples/owl.jpg")
 
 st.markdown('#')
