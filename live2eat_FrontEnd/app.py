@@ -20,19 +20,19 @@ option = st.selectbox('Please select a video',
                        'Mee Rubus', 'Mee Siam'))
 
 if option == 'Bak Chor Mee':
-    gcs_uri = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Bak%20Chor%20Mee.mp4?authuser=0
+    video_URL = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Bak%20Chor%20Mee.mp4?authuser=0
 if option == 'Hokkien Mee':
-    gcs_uri = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Hokkien%20Mee.mp4?authuser=0
+    video_URL = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Hokkien%20Mee.mp4?authuser=0
 if option == 'Kaya Toast':
-    gcs_uri = http://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Kaya%20Toast.mp4?authuser=0
+    video_URL = http://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Kaya%20Toast.mp4?authuser=0
 if option == 'Laksa':
-    gcs_uri = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Laksa.mp4?authuser=0
+    video_URL = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Laksa.mp4?authuser=0
 if option == 'Mee Rubus':
-    gcs_uri = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Mee%20Rebus.mp4?authuser=0
+    video_URL = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Mee%20Rebus.mp4?authuser=0
 elif option == 'Mee Siam':
-    gcs_uri = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Mee%20Siam.mp4?authuser=0
+    video_URL = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Mee%20Siam.mp4?authuser=0
 
-st.video(option, format="video/mp4", start_time=0)
+st.video(video_URL, format="video/mp4", start_time=0)
 
 st.markdown('#')
 st.markdown('#')
