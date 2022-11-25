@@ -5,18 +5,17 @@ import time
 def video_analysis_googleapi(option):
 
     if option == 'Bak Chor Mee':
-        gcs_uri = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Bak%20Chor%20Mee.mp4?authuser=0
+        gcs_uri = 'https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Bak%20Chor%20Mee.mp4?authuser=0'
     if option == 'Hokkien Mee':
-        gcs_uri = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Hokkien%20Mee.mp4?authuser=0
+        gcs_uri = 'https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Hokkien%20Mee.mp4?authuser=0'
     if option == 'Kaya Toast':
-        gcs_uri = http://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Kaya%20Toast.mp4?authuser=0
+        gcs_uri = 'http://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Kaya%20Toast.mp4?authuser=0'
     if option == 'Laksa':
-        gcs_uri = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Laksa.mp4?authuser=0
+        gcs_uri = 'https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Laksa.mp4?authuser=0'
     if option == 'Mee Rubus':
-        gcs_uri = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Mee%20Rebus.mp4?authuser=0
+        gcs_uri = 'https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Mee%20Rebus.mp4?authuser=0'
     elif option == 'Mee Siam':
-        gcs_uri = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Mee%20Siam.mp4?authuser=0
-
+        gcs_uri = 'https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Mee%20Siam.mp4?authuser=0'
 
     video_client = videointelligence.VideoIntelligenceServiceClient.from_service_account_file(
         "video-ai-testing-369602-124358c1f5fa.json")
