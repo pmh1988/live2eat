@@ -2,6 +2,10 @@ from google.cloud import videointelligence_v1 as videointelligence
 import time
 import os
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 def video_analysis_googleapi(option):
 
