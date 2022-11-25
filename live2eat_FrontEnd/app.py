@@ -1,7 +1,8 @@
 import streamlit as st
-
 import datetime
 import requests
+
+from video_analysis import *
 
 st.set_page_config(
     page_title="Live2Eat",
@@ -33,6 +34,8 @@ elif option == 'Mee Siam':
     video_URL = 'https://www.youtube.com/watch?v=1O6HwbTa1ok'
 
 st.video(video_URL, format="video/mp4", start_time=0)
+
+video_analysis_googleapi(option)
 
 st.markdown('#')
 st.markdown('#')

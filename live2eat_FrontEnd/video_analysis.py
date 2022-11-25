@@ -2,7 +2,7 @@ from google.cloud import videointelligence
 import time
 
 
-def cloud_analysis(option):
+def video_analysis_googleapi(option):
 
     if option == 'Bak Chor Mee':
         gcs_uri = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Bak%20Chor%20Mee.mp4?authuser=0
