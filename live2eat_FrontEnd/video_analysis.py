@@ -2,7 +2,7 @@ from google.cloud import videointelligence_v1 as videointelligence
 import time
 
 
-def video_analysis_googleapi(option):
+def video_analysis_googleapi(option, credentials):
 
     if option == 'Bak Chor Mee':
         gcs_uri = 'https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Bak%20Chor%20Mee.mp4?authuser=0'
@@ -50,7 +50,7 @@ def video_analysis_googleapi(option):
     # person_detection_config=person_config,
     # face_detection_config=face_config)
 
-    operation = videointelligence.annotate_video(
+    operation = credentials.annotate_video(
         request={
             "features": features,
             "input_uri": gcs_uri,

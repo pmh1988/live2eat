@@ -39,7 +39,7 @@ st.video(video_URL, format="video/mp4", start_time=0)
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets['gcp_service_account'])
 
-video_analysis_googleapi(option)
+video_analysis_googleapi(option, credentials)
 
 st.markdown('#')
 st.markdown('#')
