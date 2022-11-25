@@ -64,6 +64,7 @@ def video_analysis_googleapi(option, credentials):
 
     print("\n finnished processing.")
 
-    output_uri = "gs://videozzz/output - {}.json".format(time.time())
+    output_uri = "gs://live2eat-bootcamp/video_analysis_output - {}.json".format(
+        time.time())
 
     return output_uri
