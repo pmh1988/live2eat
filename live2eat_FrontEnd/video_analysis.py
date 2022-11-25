@@ -1,5 +1,4 @@
 from google.cloud import videointelligence_v1 as videointelligence
-from google.oauth2 import service_account
 import time
 
 
@@ -18,8 +17,8 @@ def video_analysis_googleapi(option, credentials):
     elif option == 'Mee Siam':
         gcs_uri = 'https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Mee%20Siam.mp4?authuser=0'
 
-    video_client = videointelligence.VideoIntelligenceServiceClient.Client(
-        credentials=credentials)
+    video_client = videointelligence.VideoIntelligenceServiceClient.from_service_account_file(
+        credentials)
 
     features = [
         videointelligence.Feature.OBJECT_TRACKING,
