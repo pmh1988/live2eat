@@ -18,7 +18,8 @@ def video_analysis_googleapi(option):
         gcs_uri = 'https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Mee%20Siam.mp4?authuser=0'
 
     video_client = videointelligence.VideoIntelligenceServiceClient.from_service_account_file(
-        "lewagon-livetoeat-cdabf6bc01ed.json")
+        "/home/shyann/code/seshyblack/live2eat/live2eat_FrontEnd/lewagon-livetoeat-cdabf6bc01ed.json"
+    )
 
     features = [
         videointelligence.Feature.OBJECT_TRACKING,
