@@ -1,10 +1,5 @@
 from google.cloud import videointelligence_v1 as videointelligence
 import time
-import os
-
-from dotenv import load_dotenv
-
-load_dotenv()
 
 
 def video_analysis_googleapi(option):
@@ -23,7 +18,7 @@ def video_analysis_googleapi(option):
         gcs_uri = 'https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Mee%20Siam.mp4?authuser=0'
 
     video_client = videointelligence.VideoIntelligenceServiceClient.from_service_account_file(
-        os.getenv[private_key_id], project=os.getenv[PROJECT])
+        "lewagon-livetoeat-cdabf6bc01ed.json")
 
     features = [
         videointelligence.Feature.OBJECT_TRACKING,
