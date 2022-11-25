@@ -2,7 +2,7 @@ from google.cloud import videointelligence_v1 as videointelligence
 import time
 
 
-def video_analysis_googleapi(option):
+def video_analysis_googleapi(option, credentials):
 
     if option == 'Bak Chor Mee':
         gcs_uri = 'https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Bak%20Chor%20Mee.mp4?authuser=0'
@@ -17,7 +17,8 @@ def video_analysis_googleapi(option):
     elif option == 'Mee Siam':
         gcs_uri = 'https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Mee%20Siam.mp4?authuser=0'
 
-    video_client = videointelligence.VideoIntelligenceServiceClient()
+    video_client = videointelligence.VideoIntelligenceServiceClient(
+        credentials=credentials)
 
     features = [
         videointelligence.Feature.OBJECT_TRACKING,
