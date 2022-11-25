@@ -3,6 +3,7 @@ import datetime
 import requests
 
 from video_analysis import video_analysis_googleapi
+from google.oauth2 import service_account
 
 st.set_page_config(
     page_title="Live2Eat",
@@ -35,7 +36,10 @@ elif option == 'Mee Siam':
 
 st.video(video_URL, format="video/mp4", start_time=0)
 
-video_analysis_googleapi(option)
+credentials = service_account.Credentials.from_service_account_info(
+st.secrets['gcp_service_account'])
+
+video_analysis_googleapi(option,credentials)
 
 st.markdown('#')
 st.markdown('#')
