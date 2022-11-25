@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "lewagon-livetoeat",
+  "private_key_id": "cdabf6bc01ed4af75cbf11589af0174cfc3e3b27",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDuE/t/vS/Wymsn\na8CLne8UaFJpFtUhlifxZNxq7lfWAEoa8MNLQ/FgtmiD08VN+6vwYMgcSJp8tFop\n+MHKFSjRqwyd6J1FCD0QYgOqixRx8SV1EA+S39Fg7V8uH3tdkSinXA4/fg01zpe9\neioECE7iVDyvrIIkDM7An2jpOHBLqwtQtGzJsiXmMI2zuVkHfmsbrdu4zqEEYH7Y\n9TGBOBtZUQ0FnDxaqeQUwmRV/HbBXxwioBzw4DzWRNG2vhm8LIJd51Db350AgDJe\n68Qpja3qe1fJpeBK4V2vp9VGyPJuSXxgmy7Rs9iWhftqSGDyn4YJXspOs+uf0p1M\nFbXnJ73jAgMBAAECggEAI2Lq9dCb5LQPezuD0fy2hXUAEsinAyf7ZeDU9jvY6GEA\nosJ4dJ5zqSlTnYyDfhTTOJZaCAIunCx+XlCwFSZR++ANrwbdIV6ZHO9Elju33Tu3\nko/BkNYdm+eMRyG8x2qE/WMsZvmIYyAC49Hdnt3RQ8i7gG0Gpu8UaAMJp+iQoF5R\nkPAcGer0vijuJVCttPz8K/9CfhS8LgVUvRFH9GuxDjiCvJrWWKgPG1fFr/iTf+NF\nlDVHeD9R2P4YGVBVXqDa099SRYF3rBv+/fE3GjfmNpNAv7n1F89/M9bPXqFHW5T2\nMfgiCVoRSHI2paqJL1JuOzkeWKZ9GlKXwClgTHhAaQKBgQD/UMcLrk8iO3CG/v3f\nwX4xPbV7mqWeLRJvZTsTXfCTH+6vbzgsls3z5QsuXwm4o+nV6erQnb5fKkD9Qnjn\nnXHV4X/NtXqiUnBljLDTq2zKirtqGc+sfyJ/g7ePqcZ7VFBjYxu9tSW8tv2aAzN+\nWl1Zd3KLz0gbK49HgM/G57YmHwKBgQDut1/2RnxOJLN0vJhIiBQdxgRmLgBf1BXT\neBbPHqMU2rTV3v1AvUCFRBzWXMCqZHK9NTC4e20UJL/4ht2bD0vqQLDU4yzkP1Ld\nnb4Gtvk4JJsgg6PuoZonRo+AQp0FrYEbHusPn7FjG0gsol2vvtKE70nyL0u0rjGR\nRg2aHYVHvQKBgE4iEkfo2B7Jwe4OKvNG6692CwwAj56QfIvKlwGeRflAVHMrvi0n\nGXACMCHIw9jVkMH+C/Y7z/6fl7Ppm8aF0Eh78fiqCRWT1QG+xH6Cf5CcVC5sJ7nK\nTmxnis1UT4F+k/tWYS71OM8/0OxI/oE0dkzi2RMgJBjsg7SGHw/n6T5RAoGBAIHw\nDOsH+PesIIaldZrdf12pgJGB7rA6yFqgXoIFIi3i0lYsF9waZ7lilvPT7weQv6fg\nARIaFQjG7DvCZXPWwrLS3a4zribblSaOi3YqOMPnoQz0utHU4w0H6mqdV81UYRc7\nICYT/cF9gy7QfoCANSUo/y41sla6Dr8Ny6+c7ARdAoGAIqDLgS0wRjaAD56VKxsR\nQzkA9OnTScVp+KxTDOfV4jlaVcrWIzlohwoz4g3UFOaMrBpsXJgrx5oC9LCsEuV1\nv5WbNdxfZZPmMfM9d+kToGzqfJP8vjDZqFaaxPGG7WPwbjdSclrexmZHNcfp6trH\nHnec2rRitd1y5hpnqiZpv+E=\n-----END PRIVATE KEY-----\n",
+  "client_email": "live2eat@lewagon-livetoeat.iam.gserviceaccount.com",
+  "client_id": "113874985046368950548",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/live2eat%40lewagon-livetoeat.iam.gserviceaccount.com"
+}
