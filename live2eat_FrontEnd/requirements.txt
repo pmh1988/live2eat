@@ -2,4 +2,3 @@ streamlit
 google.cloud
 pandas
 google-cloud-videointelligence
-dotenv
