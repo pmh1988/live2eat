@@ -16,9 +16,21 @@ Take the hard work out of tracking your food
 st.markdown('#')
 
 option = st.selectbox('Please select a video',
-                      ('https://youtu.be/YaHtE96uc2c',
-                       'https://www.youtube.com/watch?v=42_j8Mk_haw',
-                       'https://www.youtube.com/watch?v=OdSGnEXMbTQ'))
+                      ('Bak Chor Mee', 'Hokkien Mee', 'Kaya Toast', 'Laksa',
+                       'Mee Rubus', 'Mee Siam'))
+
+if option == 'Bak Chor Mee':
+    gcs_uri = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Bak%20Chor%20Mee.mp4?authuser=0
+if option == 'Hokkien Mee':
+    gcs_uri = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Hokkien%20Mee.mp4?authuser=0
+if option == 'Kaya Toast':
+    gcs_uri = http://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Kaya%20Toast.mp4?authuser=0
+if option == 'Laksa':
+    gcs_uri = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Laksa.mp4?authuser=0
+if option == 'Mee Rubus':
+    gcs_uri = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Mee%20Rebus.mp4?authuser=0
+elif option == 'Mee Siam':
+    gcs_uri = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Mee%20Siam.mp4?authuser=0
 
 st.video(option, format="video/mp4", start_time=0)
 
