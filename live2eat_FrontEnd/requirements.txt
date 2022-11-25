@@ -2,4 +2,4 @@ streamlit
 google.cloud
 pandas
 google-cloud-videointelligence
-pip install python-dotenv
+dotenv
