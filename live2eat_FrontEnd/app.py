@@ -2,7 +2,7 @@ import streamlit as st
 import datetime
 import requests
 
-from video_analysis import *
+from video_analysis import video_analysis_googleapi
 
 st.set_page_config(
     page_title="Live2Eat",
