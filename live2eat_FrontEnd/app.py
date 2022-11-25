@@ -20,7 +20,7 @@ option = st.selectbox('Please select a video',
                        'Mee Rubus', 'Mee Siam'))
 
 if option == 'Bak Chor Mee':
-    video_URL = 'https://www.youtube.com/watch?v=V4GR-TcqYkk'
+    video_URL = 'https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Bak%20Chor%20Mee.mp4?authuser=0'
 if option == 'Kaya Toast':
     video_URL = 'https://www.youtube.com/watch?v=7R-iTYFaS6A'
 if option == 'Hokkien Mee':
