@@ -21,9 +21,9 @@ option = st.selectbox('Please select a video',
 
 if option == 'Bak Chor Mee':
     video_URL = 'https://www.youtube.com/watch?v=V4GR-TcqYkk'
-if option == 'Hokkien Mee':
-    video_URL = 'https://www.youtube.com/watch?v=7R-iTYFaS6A'
 if option == 'Kaya Toast':
+    video_URL = 'https://www.youtube.com/watch?v=7R-iTYFaS6A'
+if option == 'Hokkien Mee':
     video_URL = 'https://www.youtube.com/watch?v=3zH2Hw4EE_U'
 if option == 'Laksa':
     video_URL = 'https://www.youtube.com/watch?v=ksBTwhiEVJw'
