@@ -1,4 +1,4 @@
 streamlit
 google.cloud
 pandas
-pip install google-cloud-videointelligence
+google-cloud-videointelligence
