@@ -1,4 +1,4 @@
-from google.cloud import videointelligence
+from google.cloud import videointelligence_v1 as videointelligence
 import time
 
 
