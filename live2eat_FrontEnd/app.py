@@ -20,17 +20,17 @@ option = st.selectbox('Please select a video',
                        'Mee Rubus', 'Mee Siam'))
 
 if option == 'Bak Chor Mee':
-    video_URL = https://www.youtube.com/watch?v=V4GR-TcqYkk
+    video_URL = 'https://www.youtube.com/watch?v=V4GR-TcqYkk'
 if option == 'Hokkien Mee':
-    video_URL = https://www.youtube.com/watch?v=7R-iTYFaS6A
+    video_URL = 'https://www.youtube.com/watch?v=7R-iTYFaS6A'
 if option == 'Kaya Toast':
-    video_URL = https://www.youtube.com/watch?v=3zH2Hw4EE_U
+    video_URL = 'https://www.youtube.com/watch?v=3zH2Hw4EE_U'
 if option == 'Laksa':
-    video_URL = https://www.youtube.com/watch?v=ksBTwhiEVJw
+    video_URL = 'https://www.youtube.com/watch?v=ksBTwhiEVJw'
 if option == 'Mee Rubus':
-    video_URL = https://www.youtube.com/watch?v=kOfofLXBB-E
+    video_URL = 'https://www.youtube.com/watch?v=kOfofLXBB-E'
 elif option == 'Mee Siam':
-    video_URL = https://www.youtube.com/watch?v=1O6HwbTa1ok
+    video_URL = 'https://www.youtube.com/watch?v=1O6HwbTa1ok'
 
 st.video(video_URL, format="video/mp4", start_time=0)
 
