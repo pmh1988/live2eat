@@ -20,17 +20,17 @@ option = st.selectbox('Please select a video',
                        'Mee Rubus', 'Mee Siam'))
 
 if option == 'Bak Chor Mee':
-    video_URL = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Bak%20Chor%20Mee.mp4?authuser=0
+    video_URL = https://www.youtube.com/watch?v=V4GR-TcqYkk
 if option == 'Hokkien Mee':
-    video_URL = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Hokkien%20Mee.mp4?authuser=0
+    video_URL = https://www.youtube.com/watch?v=7R-iTYFaS6A
 if option == 'Kaya Toast':
-    video_URL = http://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Kaya%20Toast.mp4?authuser=0
+    video_URL = https://www.youtube.com/watch?v=3zH2Hw4EE_U
 if option == 'Laksa':
-    video_URL = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Laksa.mp4?authuser=0
+    video_URL = https://www.youtube.com/watch?v=ksBTwhiEVJw
 if option == 'Mee Rubus':
-    video_URL = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Mee%20Rebus.mp4?authuser=0
+    video_URL = https://www.youtube.com/watch?v=kOfofLXBB-E
 elif option == 'Mee Siam':
-    video_URL = https://storage.cloud.google.com/live2eat-project-url/Dish%20Videos/Mee%20Siam.mp4?authuser=0
+    video_URL = https://www.youtube.com/watch?v=1O6HwbTa1ok
 
 st.video(video_URL, format="video/mp4", start_time=0)
 
