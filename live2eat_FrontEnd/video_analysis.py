@@ -46,11 +46,11 @@ def video_analysis_googleapi(option):
     # )
 
     video_context = videointelligence.VideoContext(
-        speech_transcription_config=transcript_config,
-        person_detection_config=person_config,
-        face_detection_config=face_config)
+        speech_transcription_config=transcript_config)
+    # person_detection_config=person_config,
+    # face_detection_config=face_config)
 
-    operation = video_client.annotate_video(
+    operation = videointelligence.annotate_video(
         request={
             "features": features,
             "input_uri": gcs_uri,
