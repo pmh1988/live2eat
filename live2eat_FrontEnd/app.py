@@ -10,6 +10,7 @@ st.set_page_config(
     page_icon="🐍",
     layout="centered",  # wide
     initial_sidebar_state="auto")  # collapsed
+
 '''
 # Live2Eat Food Tracking
 Take the hard work out of tracking your food
