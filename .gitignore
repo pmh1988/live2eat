@@ -6,3 +6,4 @@ raw_data/
 *.csv
 **/__pycache__/
 .env
+lewagon-livetoeat-cdabf6bc01ed.json
