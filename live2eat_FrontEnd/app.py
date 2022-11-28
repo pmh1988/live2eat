@@ -2,7 +2,7 @@ import streamlit as st
 import datetime
 import requests
 
-from video_analysis import video_analysis_googleapi
+from food_frame_capture import *
 from google.oauth2 import service_account
 
 st.set_page_config(
@@ -50,18 +50,22 @@ with st.container():
     with col1:
         st.text("Bak Chor Mee")
         st.image("https://static.streamlit.io/examples/cat.jpg")
+        st.checkbox('Select')
 
     with col2:
         st.text("Kaya Toast")
         st.image("https://static.streamlit.io/examples/dog.jpg")
+        st.checkbox('Select')
 
     with col3:
         st.text("Mee Siam")
         st.image("https://static.streamlit.io/examples/owl.jpg")
+        st.checkbox('Select')
 
     with col4:
         st.text("Hokkien Mee")
         st.image("https://static.streamlit.io/examples/owl.jpg")
+        st.checkbox('Select')
 
 with st.container():
     col1, col2, col3, col4 = st.columns(4)
@@ -69,18 +73,22 @@ with st.container():
     with col1:
         st.text("Bak Chor Mee")
         st.image("https://static.streamlit.io/examples/cat.jpg")
+        st.checkbox('Select')
 
     with col2:
         st.text("Kaya Toast")
         st.image("https://static.streamlit.io/examples/dog.jpg")
+        st.checkbox('Select')
 
     with col3:
         st.text("Mee Siam")
         st.image("https://static.streamlit.io/examples/owl.jpg")
+        st.checkbox('Select')
 
     with col4:
         st.text("Hokkien Mee")
         st.image("https://static.streamlit.io/examples/owl.jpg")
+        st.checkbox('Select')
 
 st.markdown('#')
 st.markdown('#')
@@ -123,3 +131,4 @@ st.markdown('#')
 # st.header(f'Total Calories: ${round(pred, 2)}')
 
 st.header("Total Calories : ")
+st.success ("Your choice has been submitted!")
