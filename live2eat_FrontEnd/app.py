@@ -1,11 +1,28 @@
-import streamlit as st
 import datetime
 import requests
-
 from food_frame_capture import *
-from video_selection import *
-from track_objects_food import *
+
+import streamlit as st
 from google.oauth2 import service_account
+from google.cloud import storage
+
+# Create API client.
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"]
+)
+client = storage.Client(credentials=credentials)
+# Retrieve file contents.
+# Uses st.experimental_memo to only rerun when the query changes or after 10 min.
+@st.experimental_memo(ttl=600)
+def read_file(bucket_name, file_path):
+    bucket = client.bucket(bucket_name)
+    content = bucket.blob(file_path).download_as_string().decode("utf-8")
+    return content
+
+bucket_name = "live2eat-bootcamp"
+# file_path = "myfile.csv"
+# content = read_file(bucket_name, file_path)
+
 
 st.set_page_config(
     page_title="Live2Eat",
@@ -38,16 +55,15 @@ elif option == 'Mee Siam':
 
 st.video(video_URL, format="video/mp4", start_time=0)
 
-credentials = service_account.Credentials.from_service_account_info(
-    st.secrets['gcp_service_account'])
+video_analysis_googleapi(option, credentials)
 
 st.markdown('#')
 st.markdown('#')
 
-video_url_selected = video_uri(option, credentials)
-results = track_objects(video_url_selected)
-food_entity_id = '/m/02wbm'
-video_timings = print_object_frames(results, food_entity_id)
+from PIL import Image
+# vid_output = Image.open('gs://live2eat-bootcamp/video_analysis_output/')
+vid_output = 'https://storage.cloud.google.com/live2eat-bootcamp/video_analysis_output/'
+st.image(vid_output, caption='Food Captured', use_column_width=False, channels='BGR')
 
 st.markdown('#')
 st.markdown('#')
@@ -56,24 +72,28 @@ with st.container():
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        st.text("Bak Chor Mee")
+        st.title('**Bak Chor Mee**')
         st.image("https://static.streamlit.io/examples/cat.jpg")
-        st.checkbox('Select')
+        st.header('Calorie: 50')
+        st.button('Register your calorie')
 
     with col2:
-        st.text("Kaya Toast")
+        st.title('**Kaya Toast**')
         st.image("https://static.streamlit.io/examples/dog.jpg")
-        st.checkbox('Select')
+        st.header('Calorie: 50')
+        st.button('Register your calorie')
 
     with col3:
-        st.text("Mee Siam")
+        st.title('**Chicken Rice**')
         st.image("https://static.streamlit.io/examples/owl.jpg")
-        st.checkbox('Select')
+        st.header('Calorie: 50')
+        st.button('Register your calorie')
 
     with col4:
-        st.text("Hokkien Mee")
+        st.title('**Hokkien Mee**')
         st.image("https://static.streamlit.io/examples/owl.jpg")
-        st.checkbox('Select')
+        st.header('Calorie: 50')
+        st.cbutton('Register your calorie')
 
 with st.container():
     col1, col2, col3, col4 = st.columns(4)
@@ -139,4 +159,4 @@ st.markdown('#')
 # st.header(f'Total Calories: ${round(pred, 2)}')
 
 st.header("Total Calories : ")
-st.success("Your choice has been submitted!")
+st.success ("Your choice has been submitted!")
