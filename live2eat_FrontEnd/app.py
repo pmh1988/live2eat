@@ -3,6 +3,8 @@ import datetime
 import requests
 
 from food_frame_capture import *
+from video_selection import *
+from track_objects_food import *
 from google.oauth2 import service_account
 
 st.set_page_config(
@@ -10,7 +12,6 @@ st.set_page_config(
     page_icon="🐍",
     layout="centered",  # wide
     initial_sidebar_state="auto")  # collapsed
-
 '''
 # Live2Eat Food Tracking
 Take the hard work out of tracking your food
@@ -40,7 +41,13 @@ st.video(video_URL, format="video/mp4", start_time=0)
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets['gcp_service_account'])
 
-video_analysis_googleapi(option, credentials)
+st.markdown('#')
+st.markdown('#')
+
+video_url_selected = video_uri(option, credentials)
+results = track_objects(video_url_selected)
+food_entity_id = '/m/02wbm'
+video_timings = print_object_frames(results, food_entity_id)
 
 st.markdown('#')
 st.markdown('#')
@@ -132,4 +139,4 @@ st.markdown('#')
 # st.header(f'Total Calories: ${round(pred, 2)}')
 
 st.header("Total Calories : ")
-st.success ("Your choice has been submitted!")
+st.success("Your choice has been submitted!")

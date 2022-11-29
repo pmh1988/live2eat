@@ -4,25 +4,6 @@ from typing import Optional, Sequence
 from datetime import timedelta
 
 
-def video_uri(option, credentials):
-
-    if option == 'Bak Chor Mee':
-        video_uri = 'gs://live2eat-bootcamp/Dish Videos/Bak Chor Mee.mp4'
-    if option == 'Hokkien Mee':
-        video_uri = 'gs://live2eat-bootcamp/Dish Videos/Hokkien Mee.mp4'
-    if option == 'Kaya Toast':
-        video_uri = 'gs://live2eat-bootcamp/Dish Videos/Kaya Toast.mp4'
-    if option == 'Laksa':
-        video_uri = 'gs://live2eat-bootcamp/Dish Videos/Laksa.mp4'
-    if option == 'Mee Rubus':
-        video_uri = 'gs://live2eat-bootcamp/Dish Videos/Mee Rebus.mp4'
-    elif option == 'Mee Siam':
-        video_uri = 'gs://live2eat-bootcamp/Dish Videos/Mee Siam.mp4'
-
-    video_client = vi.VideoIntelligenceServiceClient(credentials=credentials)
-
-    return video_uri
-
 
 def track_objects(
     video_uri: str,
@@ -43,11 +24,6 @@ def track_objects(
     return operation.result().annotation_results[0]
 
 
-segment = vi.VideoSegment(
-    start_time_offset=timedelta(seconds=1),
-    end_time_offset=timedelta(seconds=240),
-    )
-results = track_objects(video_uri, [segment])
 
 def print_object_frames(
     results: vi.VideoAnnotationResults, entity_id: str, min_confidence: float = 0.7
@@ -80,5 +56,4 @@ def print_object_frames(
                 sep=" | ",
             )
 
-food_entity_id = '/m/02wbm'
-print_object_frames(results, food_entity_id)
+
