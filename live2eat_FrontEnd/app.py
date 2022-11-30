@@ -65,8 +65,7 @@ st.markdown('#')
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets['gcp_service_account'])
 
-
-
+#---------------------------------------------------------------
 
 # specify local folder locations
 dir = os.getcwd()
@@ -82,16 +81,14 @@ try:
 except OSError:
     print ('Error: Creating directory of data')
 
-
-
+#---------------------------------------------------------------
 
 # select the video and download it
 video_uri = video_uri(option, credentials)
 download_video_opencv(video_uri)
 cam = cv2.VideoCapture('/tmp/video.mp4')
 
-
-
+#---------------------------------------------------------------
 
 # googleVideointelligence API video frames extract
 results = track_objects(video_uri)
@@ -105,8 +102,7 @@ with open("results.p", "rb") as f:
 food_entity_id = '/m/02wbm'
 food_times = print_object_frames(results, food_entity_id)
 
-
-
+#---------------------------------------------------------------
 
 # video frames export
 sorted_dishes = sorted(glob.glob(raw_data_dir + "/*.jpg"),key=lambda s: int(s.split('/')[-1].split('.')[0]))
@@ -117,14 +113,13 @@ resized_dishes_2d = create_reshaped_dish_list(resized_dishes)
 file_labels=dish_clustering_dataframe(resized_dishes_2d, sorted_dishes)
 median_dish(file_labels, raw_data_dir, export_path)
 
-
-
+#---------------------------------------------------------------
 
 # model predict dishes
 
 
 
-
+#---------------------------------------------------------------
 st.markdown('#')
 st.markdown('#')
 
