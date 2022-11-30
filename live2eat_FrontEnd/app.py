@@ -132,24 +132,28 @@ with st.container():
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        st.text("Bak Chor Mee")
+        st.title('**Bak Chor Mee**')
         st.image("https://static.streamlit.io/examples/cat.jpg")
-        st.checkbox('Select')
+        st.header('Calorie: 50')
+        st.button('Register your calorie')
 
     with col2:
-        st.text("Kaya Toast")
+        st.title('**Kaya Toast**')
         st.image("https://static.streamlit.io/examples/dog.jpg")
-        st.checkbox('Select')
+        st.header('Calorie: 50')
+        st.button('Register your calorie')
 
     with col3:
-        st.text("Mee Siam")
+        st.title('**Chicken Rice**')
         st.image("https://static.streamlit.io/examples/owl.jpg")
-        st.checkbox('Select')
+        st.header('Calorie: 50')
+        st.button('Register your calorie')
 
     with col4:
-        st.text("Hokkien Mee")
+        st.title('**Hokkien Mee**')
         st.image("https://static.streamlit.io/examples/owl.jpg")
-        st.checkbox('Select')
+        st.header('Calorie: 50')
+        st.cbutton('Register your calorie')
 
 with st.container():
     col1, col2, col3, col4 = st.columns(4)
@@ -180,4 +184,4 @@ st.markdown('#')
 
 
 st.header("Total Calories : ")
-st.success("Your choice has been submitted!")
+st.success ("Your choice has been submitted!")
