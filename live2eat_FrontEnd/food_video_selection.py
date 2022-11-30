@@ -1,3 +1,23 @@
+import time
+import statistics
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import cv2
+import numpy as np
+import pickle
+import glob
+import os
+
+from typing import Optional, Sequence
+from datetime import timedelta
+from google.oauth2 import service_account
+from sklearn.cluster import KMeans
+
+from google.cloud import videointelligence as vi
+from google.cloud import storage
+
+
 def video_uri(option, credentials):
 
     if option == 'Bak Chor Mee':
@@ -13,6 +33,11 @@ def video_uri(option, credentials):
     elif option == 'Mee Siam':
         video_uri = 'gs://live2eat-bootcamp/Dish Videos/Mee Siam.mp4'
 
-    video_client = vi.VideoIntelligenceServiceClient(credentials=credentials)
-
     return video_uri
+
+
+def download_video_opencv(video_uri):
+    last_path = os.sep.join(os.path.normpath(video_uri).split(os.sep)[-2:])
+    bucket = storage.Client().bucket('live2eat-bootcamp')
+    blob = bucket.blob(last_path)
+    blob.download_to_filename('/tmp/video.mp4')

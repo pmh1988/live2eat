@@ -1,11 +1,30 @@
+import time
+import statistics
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import cv2
+import numpy as np
+import pickle
+import glob
+import os
+
+from typing import Optional, Sequence
+from datetime import timedelta
+from google.oauth2 import service_account
+from sklearn.cluster import KMeans
+
+from google.cloud import videointelligence as vi
+from google.cloud import storage
+
 import streamlit as st
 import datetime
 import requests
 
-from food_frame_capture import *
-from video_selection import *
-from track_objects_food import *
-from google.oauth2 import service_account
+from food_video_selection import *
+from food_frame_extract import *
+from food_frame_export import *
+
 
 st.set_page_config(
     page_title="Live2Eat",
@@ -38,16 +57,73 @@ elif option == 'Mee Siam':
 
 st.video(video_URL, format="video/mp4", start_time=0)
 
+
+st.markdown('#')
+st.markdown('#')
+
+
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets['gcp_service_account'])
 
-st.markdown('#')
-st.markdown('#')
 
-video_url_selected = video_uri(option, credentials)
-results = track_objects(video_url_selected)
+
+
+# specify local folder locations
+dir = os.getcwd()
+raw_data_dir = f'{dir}/raw_data'
+export_path = f'{dir}/data'
+
+try:
+    # creating a folder named data
+    if not os.path.exists('raw_data'):
+        os.makedirs('raw_data')
+
+# if not created then raise error
+except OSError:
+    print ('Error: Creating directory of data')
+
+
+
+
+# select the video and download it
+video_uri = video_uri(option, credentials)
+download_video_opencv(video_uri)
+cam = cv2.VideoCapture('/tmp/video.mp4')
+
+
+
+
+# googleVideointelligence API video frames extract
+results = track_objects(video_uri)
+
+with open("results.p", "wb") as f:
+    pickle.dump(results, f)
+
+with open("results.p", "rb") as f:
+    results = pickle.load(f)
+
 food_entity_id = '/m/02wbm'
-video_timings = print_object_frames(results, food_entity_id)
+food_times = print_object_frames(results, food_entity_id)
+
+
+
+
+# video frames export
+sorted_dishes = sorted(glob.glob(raw_data_dir + "/*.jpg"),key=lambda s: int(s.split('/')[-1].split('.')[0]))
+export_raw_data(food_times,cam)
+dishes = create_dish_list(sorted_dishes)
+resized_dishes = create_resized_dish_list(dishes)
+resized_dishes_2d = create_reshaped_dish_list(resized_dishes)
+file_labels=dish_clustering_dataframe(resized_dishes_2d, sorted_dishes)
+median_dish(file_labels, raw_data_dir, export_path)
+
+
+
+
+# model predict dishes
+
+
+
 
 st.markdown('#')
 st.markdown('#')
@@ -101,42 +177,7 @@ with st.container():
 st.markdown('#')
 st.markdown('#')
 
-# with st.form(key='params_for_api'):
 
-#     pickup_date = st.date_input('pickup datetime',
-#                                 value=datetime.datetime(
-#                                     2012, 10, 6, 12, 10, 20))
-#     pickup_time = st.time_input('pickup datetime',
-#                                 value=datetime.datetime(
-#                                     2012, 10, 6, 12, 10, 20))
-#     pickup_datetime = f'{pickup_date} {pickup_time}'
-#     pickup_longitude = st.number_input('pickup longitude', value=40.7614327)
-#     pickup_latitude = st.number_input('pickup latitude', value=-73.9798156)
-#     dropoff_longitude = st.number_input('dropoff longitude', value=40.6413111)
-#     dropoff_latitude = st.number_input('dropoff latitude', value=-73.7803331)
-#     passenger_count = st.number_input('passenger_count',
-#                                       min_value=1,
-#                                       max_value=8,
-#                                       step=1,
-#                                       value=1)
-
-#     st.form_submit_button('Make prediction')
-
-# params = dict(pickup_datetime=pickup_datetime,
-#               pickup_longitude=pickup_longitude,
-#               pickup_latitude=pickup_latitude,
-#               dropoff_longitude=dropoff_longitude,
-#               dropoff_latitude=dropoff_latitude,
-#               passenger_count=passenger_count)
-
-# wagon_cab_api_url = 'https://taxifare.lewagon.ai/predict'
-# response = requests.get(wagon_cab_api_url, params=params)
-
-# prediction = response.json()
-
-# pred = prediction['fare']
-
-# st.header(f'Total Calories: ${round(pred, 2)}')
 
 st.header("Total Calories : ")
 st.success("Your choice has been submitted!")
