@@ -24,7 +24,7 @@ import requests
 from food_video_selection import *
 from food_frame_extract import *
 from food_frame_export import *
-
+from food_prediction import *
 
 st.set_page_config(
     page_title="Live2Eat",
@@ -57,10 +57,8 @@ elif option == 'Mee Siam':
 
 st.video(video_URL, format="video/mp4", start_time=0)
 
-
 st.markdown('#')
 st.markdown('#')
-
 
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets['gcp_service_account'])
@@ -79,7 +77,7 @@ try:
 
 # if not created then raise error
 except OSError:
-    print ('Error: Creating directory of data')
+    print('Error: Creating directory of data')
 
 #---------------------------------------------------------------
 
@@ -105,19 +103,20 @@ food_times = print_object_frames(results, food_entity_id)
 #---------------------------------------------------------------
 
 # video frames export
-sorted_dishes = sorted(glob.glob(raw_data_dir + "/*.jpg"),key=lambda s: int(s.split('/')[-1].split('.')[0]))
-export_raw_data(food_times,cam)
+sorted_dishes = sorted(glob.glob(raw_data_dir + "/*.jpg"),
+                       key=lambda s: int(s.split('/')[-1].split('.')[0]))
+export_raw_data(food_times, cam)
 dishes = create_dish_list(sorted_dishes)
 resized_dishes = create_resized_dish_list(dishes)
 resized_dishes_2d = create_reshaped_dish_list(resized_dishes)
-file_labels=dish_clustering_dataframe(resized_dishes_2d, sorted_dishes)
+file_labels = dish_clustering_dataframe(resized_dishes_2d, sorted_dishes)
 median_dish(file_labels, raw_data_dir, export_path)
 
 #---------------------------------------------------------------
 
 # model predict dishes
 
-
+prediction = predict(export_path)
 
 #---------------------------------------------------------------
 st.markdown('#')
@@ -176,7 +175,5 @@ with st.container():
 st.markdown('#')
 st.markdown('#')
 
-
-
 st.header("Total Calories : ")
-st.success ("Your choice has been submitted!")
+st.success("Your choice has been submitted!")
