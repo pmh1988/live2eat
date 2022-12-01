@@ -33,9 +33,17 @@ Take the hard work out of tracking your food
 '''
 st.markdown('#')
 
-option = st.selectbox('Please select a video',
-                      ('Bak Chor Mee', 'Hokkien Mee', 'Kaya Toast', 'Laksa',
-                       'Mee Rubus', 'Mee Siam'))
+values = [
+    'None Selected', 'Bak Chor Mee', 'Hokkien Mee', 'Kaya Toast',
+    'Chilli Crab', 'Chicken Rice'
+]
+
+default = values.index('None Selected')
+option = st.sidebar.selectbox('Please select a video', values, index=default)
+
+# option = st.selectbox('Please select a video',
+#                       ('Bak Chor Mee', 'Hokkien Mee', 'Kaya Toast', 'Laksa',
+#                        'Mee Rubus', 'Mee Siam'))
 
 if option == 'Bak Chor Mee':
     video_URL = 'https://www.youtube.com/watch?v=V4GR-TcqYkk'
@@ -43,12 +51,10 @@ if option == 'Kaya Toast':
     video_URL = 'https://www.youtube.com/watch?v=7R-iTYFaS6A'
 if option == 'Hokkien Mee':
     video_URL = 'https://www.youtube.com/watch?v=3zH2Hw4EE_U'
-if option == 'Laksa':
-    video_URL = 'https://www.youtube.com/watch?v=ksBTwhiEVJw'
-if option == 'Mee Rubus':
-    video_URL = 'https://www.youtube.com/watch?v=kOfofLXBB-E'
-elif option == 'Mee Siam':
-    video_URL = 'https://www.youtube.com/watch?v=1O6HwbTa1ok'
+if option == 'Chilli Crab':
+    video_URL = 'https://www.youtube.com/watch?v=g--tLRttm18'
+elif option == 'Chicken Rice':
+    video_URL = 'https://www.youtube.com/watch?v=S3UJD08RrFQ'
 
 st.video(video_URL, format="video/mp4", start_time=0)
 
@@ -149,29 +155,6 @@ with st.container():
         st.image("https://static.streamlit.io/examples/owl.jpg")
         st.header('Calorie: 50')
         st.cbutton('Register your calorie')
-
-with st.container():
-    col1, col2, col3, col4 = st.columns(4)
-
-    with col1:
-        st.text("Bak Chor Mee")
-        st.image("https://static.streamlit.io/examples/cat.jpg")
-        st.checkbox('Select')
-
-    with col2:
-        st.text("Kaya Toast")
-        st.image("https://static.streamlit.io/examples/dog.jpg")
-        st.checkbox('Select')
-
-    with col3:
-        st.text("Mee Siam")
-        st.image("https://static.streamlit.io/examples/owl.jpg")
-        st.checkbox('Select')
-
-    with col4:
-        st.text("Hokkien Mee")
-        st.image("https://static.streamlit.io/examples/owl.jpg")
-        st.checkbox('Select')
 
 st.markdown('#')
 st.markdown('#')
