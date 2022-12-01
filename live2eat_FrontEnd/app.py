@@ -90,7 +90,10 @@ except OSError:
 # select the video and download it
 video_uri = video_uri(option, credentials)
 download_video_opencv(video_uri, credentials)
-cam = cv2.VideoCapture(os.path.join(os.getcwd(), 'video.mp4'))
+
+video_path = os.path.join(os.getcwd(), 'video.mp4')
+print('Reading video from: ', video_path)
+cam = cv2.VideoCapture(video_path)
 
 #---------------------------------------------------------------
 
@@ -120,6 +123,8 @@ capture_images(food_times, cam, raw_data_dir)
 
 sorted_dishes = sorted(glob.glob(raw_data_dir + "/*.jpg"),
                        key=lambda s: int(s.split('/')[-1].split('.')[0]))
+
+print(f'length of {sorted_dishes = }')
 
 print(f'length of sorted_dish after glob: {len(sorted_dishes)}')
 dishes = create_dish_list(sorted_dishes)
