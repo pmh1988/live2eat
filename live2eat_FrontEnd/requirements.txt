@@ -51,7 +51,7 @@ rich==12.6.0
 rsa==4.9
 semver==2.13.0
 six==1.16.0
-sklearn==0.0.post1
+scikit-learn
 smmap==5.0.0
 streamlit==1.15.1
 toml==0.10.2
