@@ -2,7 +2,6 @@ import time
 import statistics
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 import cv2
 import numpy as np
 import pickle
@@ -35,8 +34,6 @@ def track_objects(
 
     operation = video_client.annotate_video(request)
     return operation.result().annotation_results[0]
-
-
 
 
 def print_object_frames(results: vi.VideoAnnotationResults,
