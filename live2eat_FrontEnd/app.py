@@ -1,29 +1,25 @@
-import time
-import statistics
-import numpy as np
-import pandas as pd
-import cv2
-import numpy as np
-import pickle
+import datetime
 import glob
 import os
-
-from typing import Optional, Sequence
+import pickle
+import statistics
+import time
 from datetime import timedelta
+from typing import Optional, Sequence
+
+import cv2
+import numpy as np
+import pandas as pd
+import requests
+import streamlit as st
+from food_frame_export import *
+from food_frame_extract import *
+from food_prediction import *
+from food_video_selection import *
+from google.cloud import storage
+from google.cloud import videointelligence as vi
 from google.oauth2 import service_account
 from sklearn.cluster import KMeans
-
-from google.cloud import videointelligence as vi
-from google.cloud import storage
-
-import streamlit as st
-import datetime
-import requests
-
-from food_video_selection import *
-from food_frame_extract import *
-from food_frame_export import *
-from food_prediction import *
 
 st.set_page_config(
     page_title="Live2Eat",
