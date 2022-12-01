@@ -17,7 +17,7 @@ from google.cloud import videointelligence as vi
 from google.cloud import storage
 
 
-def export_raw_data(food_times, cam):
+def capture_images(food_times, cam):
     print(f"{food_times = }")
     if cam.isOpened():
 
@@ -43,6 +43,7 @@ def export_raw_data(food_times, cam):
 
 def create_dish_list(sorted_dishes):
     dishes = []
+    print(f'length of sorted_dish: {len(sorted_dishes)}')
 
     for dish in sorted_dishes:
         dish_image = cv2.imread(dish)

@@ -110,11 +110,19 @@ food_times = sorted(set(food_times))[::5]
 #     f.close()
 
 #---------------------------------------------------------------
-
 # video frames export
+for f in os.listdir(raw_data_dir):
+    os.remove(os.path.join(raw_data_dir, f))
+
+print('Deleted successfully:', raw_data_dir)
+
+print('Current Dir: ', os.getcwd())
+capture_images(food_times, cam)
+
 sorted_dishes = sorted(glob.glob(raw_data_dir + "/*.jpg"),
                        key=lambda s: int(s.split('/')[-1].split('.')[0]))
-export_raw_data(food_times, cam)
+
+print(f'length of sorted_dish after glob: {len(sorted_dishes)}')
 dishes = create_dish_list(sorted_dishes)
 resized_dishes = create_resized_dish_list(dishes)
 resized_dishes_2d = create_reshaped_dish_list(resized_dishes)
