@@ -33,18 +33,20 @@ Take the hard work out of tracking your food
 '''
 st.markdown('#')
 
-values = [
-    'None Selected', 'Bak Chor Mee', 'Hokkien Mee', 'Kaya Toast',
-    'Chilli Crab', 'Chicken Rice'
-]
+# values = [
+#     'None Selected', 'Bak Chor Mee', 'Hokkien Mee', 'Kaya Toast',
+#     'Chilli Crab', 'Chicken Rice'
+# ]
 
-default = values.index('None Selected')
-option = st.sidebar.selectbox('Please select a video', values, index=default)
+# default = values.index('None Selected')
+# option = st.sidebar.selectbox('Please select a video', values, index=default)
 
-# option = st.selectbox('Please select a video',
-#                       ('Bak Chor Mee', 'Hokkien Mee', 'Kaya Toast', 'Laksa',
-#                        'Mee Rubus', 'Mee Siam'))
+option = st.selectbox('Please select a video',
+                      ('Bak Chor Mee', 'Hokkien Mee', 'Kaya Toast', 'Laksa',
+                       'Chilli Crab', 'Chicken Rice'))
 
+if option == 'None Selected':
+    video_URL = 'https://www.youtube.com/watch?v=q2uXv0LZJuQ&t=4s'
 if option == 'Bak Chor Mee':
     video_URL = 'https://www.youtube.com/watch?v=V4GR-TcqYkk'
 if option == 'Kaya Toast':
@@ -154,7 +156,7 @@ with st.container():
         st.title('**Hokkien Mee**')
         st.image("https://static.streamlit.io/examples/owl.jpg")
         st.header('Calorie: 50')
-        st.cbutton('Register your calorie')
+        st.button('Register your calorie')
 
 st.markdown('#')
 st.markdown('#')
