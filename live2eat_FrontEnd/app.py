@@ -71,7 +71,7 @@ credentials = service_account.Credentials.from_service_account_info(
 # specify local folder locations
 dir = os.getcwd()
 raw_data_dir = f'{dir}/raw_data'
-export_path = f'{dir}/data'
+export_path = f'{dir}/data/predict_images'
 
 try:
     # creating a folder named data
@@ -79,7 +79,7 @@ try:
         os.makedirs('raw_data')
 
     if not os.path.exists('data'):
-        os.makedirs('data')
+        os.makedirs('data/predict_images')
 
 # if not created then raise error
 except OSError:
@@ -114,13 +114,9 @@ food_times = sorted(set(food_times))[::5]
 
 #---------------------------------------------------------------
 # video frames export
-for f in os.listdir(raw_data_dir):
-    os.remove(os.path.join(raw_data_dir, f))
-
-print('Deleted successfully:', raw_data_dir)
 
 print('Current Dir: ', os.getcwd())
-capture_images(food_times, cam)
+capture_images(food_times, cam, raw_data_dir)
 
 sorted_dishes = sorted(glob.glob(raw_data_dir + "/*.jpg"),
                        key=lambda s: int(s.split('/')[-1].split('.')[0]))

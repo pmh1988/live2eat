@@ -17,7 +17,13 @@ from google.cloud import videointelligence as vi
 from google.cloud import storage
 
 
-def capture_images(food_times, cam):
+def capture_images(food_times, cam, raw_data_dir):
+
+    for f in os.listdir(raw_data_dir):
+        os.remove(os.path.join(raw_data_dir, f))
+
+    print('Deleted successfully:', raw_data_dir)
+
     print(f"{food_times = }")
     if cam.isOpened():
 
@@ -89,6 +95,11 @@ def dish_clustering_dataframe(resized_dishes_2d, sorted_dishes):
 
 
 def median_dish(file_labels, raw_data_dir, export_path):
+
+    for f in os.listdir(export_path):
+        os.remove(os.path.join(export_path, f))
+
+    print('Deleted successfully:', export_path)
 
     median_image_times = file_labels.groupby('labels')['time'].apply(
         statistics.median_low)
