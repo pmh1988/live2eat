@@ -2,3 +2,4 @@ streamlit
 google.cloud
 pandas
 google-cloud-videointelligence
+opencv-python
