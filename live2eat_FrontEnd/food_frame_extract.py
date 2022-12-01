@@ -19,10 +19,11 @@ from google.cloud import storage
 
 def track_objects(
     video_uri: str,
+    credentials,
     segments: Optional[Sequence[vi.VideoSegment]] = None
 ) -> vi.VideoAnnotationResults:
 
-    video_client = vi.VideoIntelligenceServiceClient()
+    video_client = vi.VideoIntelligenceServiceClient(credentials=credentials)
     features = [vi.Feature.OBJECT_TRACKING]
     context = vi.VideoContext(segments=segments)
     request = vi.AnnotateVideoRequest(

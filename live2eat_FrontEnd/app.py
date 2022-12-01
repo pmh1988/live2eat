@@ -84,7 +84,7 @@ cam = cv2.VideoCapture('/tmp/video.mp4')
 #---------------------------------------------------------------
 
 # googleVideointelligence API video frames extract
-results = track_objects(video_uri)
+results = track_objects(video_uri, credentials)
 
 with open("results.p", "wb") as f:
     pickle.dump(results, f)
