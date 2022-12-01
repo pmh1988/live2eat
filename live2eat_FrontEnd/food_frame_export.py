@@ -20,9 +20,8 @@ from google.cloud import storage
 def export_raw_data(food_times, cam):
     print(f"{food_times = }")
     if cam.isOpened():
-        for time in food_times:
 
-            # reading from frame
+        for time in food_times:
 
             capture_time = time * 1000
             cam.set(cv2.CAP_PROP_POS_MSEC, capture_time)

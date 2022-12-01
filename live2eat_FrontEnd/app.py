@@ -159,5 +159,8 @@ with st.container():
 st.markdown('#')
 st.markdown('#')
 
-st.header("Total Calories : ")
-st.success("Your choice has been submitted!")
+if st.button('Submit'):
+    st.success("Your choice has been submitted!")
+
+else:
+    st.write('Please make a choice')
