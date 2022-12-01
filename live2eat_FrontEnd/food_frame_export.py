@@ -22,6 +22,7 @@ def export_raw_data(food_times, cam):
     if cam.isOpened():
 
         while True:
+
             for time in food_times:
 
                 # reading from frame
@@ -39,7 +40,8 @@ def export_raw_data(food_times, cam):
 
                 # Release all space and windows once done
                 cam.release()
-    cv2.destroyAllWindows()
+
+                cv2.destroyAllWindows()
 
 
 def create_dish_list(sorted_dishes):
