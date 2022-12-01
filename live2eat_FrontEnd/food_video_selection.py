@@ -35,7 +35,7 @@ def video_uri(option, credentials):
     return video_uri
 
 
-def download_video_opencv(video_uri,credentials):
+def download_video_opencv(video_uri, credentials):
     video_client = vi.VideoIntelligenceServiceClient(credentials=credentials)
     last_path = os.sep.join(os.path.normpath(video_uri).split(os.sep)[-2:])
     bucket = storage.Client().bucket('live2eat-bootcamp')
