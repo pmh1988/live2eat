@@ -23,17 +23,19 @@ def export_raw_data(food_times, cam):
         for time in food_times:
 
             # reading from frame
-            ret, frame = cam.read()
 
             capture_time = time * 1000
-
             cam.set(cv2.CAP_PROP_POS_MSEC, capture_time)
 
-            name = './raw_data/' + str(capture_time) + '.jpg'
-            print('Creating...' + name)
+            ret, frame = cam.read()
 
-            # writing the extracted images
-            cv2.imwrite(name, frame)
+            if ret:
+
+                name = './raw_data/' + str(capture_time) + '.jpg'
+                print('Creating...' + name)
+
+                # writing the extracted images
+                cv2.imwrite(name, frame)
 
             # Release all space and windows once done
         cam.release()
@@ -66,8 +68,9 @@ def create_resized_dish_list(dishes):
 
 
 def create_reshaped_dish_list(resized_dishes):
-
-    resized_dishes_2d = np.array(resized_dishes).reshape(330, 180 * 320 * 3)
+    img = resized_dishes[0]
+    resized_dishes_2d = np.array(resized_dishes).reshape(
+        len(resized_dishes), img.shape[0] * img.shape[1] * img.shape[2])
     return resized_dishes_2d
 
 
