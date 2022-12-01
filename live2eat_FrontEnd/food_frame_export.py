@@ -110,4 +110,4 @@ def median_dish(file_labels, raw_data_dir, export_path):
         cv2.imwrite(os.path.join(export_path, f'{time}.0.jpg'), image)
         print(f'{time}.0.jpg' + ' written to' +
               os.path.join(export_path, f'{time}.0.jpg'))
-    os.remove('/tmp/video.mp4')  # Delete tmp resources to free memory
+    os.remove(os.path.join(os.getcwd(), 'video.mp4'))  # Delete tmp resources to free memory

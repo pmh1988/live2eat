@@ -39,4 +39,4 @@ def download_video_opencv(video_uri, credentials):
     bucket = storage.Client(
         credentials=credentials).bucket('live2eat-bootcamp')
     blob = bucket.blob(last_path)
-    blob.download_to_filename('/tmp/video.mp4')
+    blob.download_to_filename(os.path.join(os.getcwd(), 'video.mp4'))
