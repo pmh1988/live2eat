@@ -18,7 +18,7 @@ from google.cloud import storage
 
 
 def video_uri(option, credentials):
-
+    video_client = vi.VideoIntelligenceServiceClient(credentials=credentials)
     if option == 'Bak Chor Mee':
         video_uri = 'gs://live2eat-bootcamp/Dish Videos/Bak Chor Mee.mp4'
     if option == 'Hokkien Mee':
@@ -35,7 +35,8 @@ def video_uri(option, credentials):
     return video_uri
 
 
-def download_video_opencv(video_uri):
+def download_video_opencv(video_uri,credentials):
+    video_client = vi.VideoIntelligenceServiceClient(credentials=credentials)
     last_path = os.sep.join(os.path.normpath(video_uri).split(os.sep)[-2:])
     bucket = storage.Client().bucket('live2eat-bootcamp')
     blob = bucket.blob(last_path)
