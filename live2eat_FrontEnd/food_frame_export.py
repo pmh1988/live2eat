@@ -97,5 +97,4 @@ def median_dish(file_labels, raw_data_dir, export_path):
 
         image = cv2.imread(f'{raw_data_dir}/{time}.0.jpg')
         cv2.imwrite(os.path.join(export_path, f'{time}.0.jpg'), image)
-        cv2.waitKey(0)
     os.remove('/tmp/video.mp4')  # Delete tmp resources to free memory
