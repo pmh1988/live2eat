@@ -37,8 +37,8 @@ def export_raw_data(food_times, cam):
                 # writing the extracted images
                 cv2.imwrite(name, frame)
 
-        # Release all space and windows once done
-        cam.release()
+                # Release all space and windows once done
+                cam.release()
     cv2.destroyAllWindows()
 
 
