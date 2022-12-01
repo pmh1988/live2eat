@@ -94,6 +94,12 @@ with open("results.p", "rb") as f:
 
 food_entity_id = '/m/02wbm'
 food_times = print_object_frames(results, food_entity_id)
+food_times = sorted(set(food_times))[::5]
+
+# with open('food_times.csv', 'w') as f:
+#     for timing in food_times:
+#         f.write(str(timing) + '\n')
+#     f.close()
 
 #---------------------------------------------------------------
 

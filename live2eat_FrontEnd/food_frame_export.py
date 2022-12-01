@@ -18,30 +18,26 @@ from google.cloud import storage
 
 
 def export_raw_data(food_times, cam):
-
+    print(f"{food_times = }")
     if cam.isOpened():
+        for time in food_times:
 
-        while True:
+            # reading from frame
+            ret, frame = cam.read()
 
-            for time in food_times:
+            capture_time = time * 1000
 
-                # reading from frame
-                ret, frame = cam.read()
+            cam.set(cv2.CAP_PROP_POS_MSEC, capture_time)
 
-                capture_time = time * 1000
+            name = './raw_data/' + str(capture_time) + '.jpg'
+            print('Creating...' + name)
 
-                cam.set(cv2.CAP_PROP_POS_MSEC, capture_time)
+            # writing the extracted images
+            cv2.imwrite(name, frame)
 
-                name = './raw_data/' + str(capture_time) + '.jpg'
-                print('Creating...' + name)
-
-                # writing the extracted images
-                cv2.imwrite(name, frame)
-
-                # Release all space and windows once done
-                cam.release()
-
-                # cv2.destroyAllWindows()
+            # Release all space and windows once done
+        cam.release()
+        # cv2.destroyAllWindows()
 
 
 def create_dish_list(sorted_dishes):
