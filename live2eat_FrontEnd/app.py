@@ -132,7 +132,7 @@ median_dish(file_labels, raw_data_dir, export_path)
 
 # model predict dishes
 
-prediction = predict(export_path)
+prediction = predict()
 
 #---------------------------------------------------------------
 st.markdown('#')

@@ -4,10 +4,9 @@ from tensorflow.keras.applications.vgg16 import preprocess_input
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 
-def predict(export_path):
-    print(f'{export_path = }')
+def predict():
 
-    model = load_model('my_model.h5')
+    model = load_model(os.path.join(os.getcwd(), 'my_model.h5'))
     test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
     predict_data = test_datagen.flow_from_directory(os.path.join(
         os.getcwd(), 'data'),
