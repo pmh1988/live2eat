@@ -92,9 +92,11 @@ def median_dish(file_labels, raw_data_dir, export_path):
 
     median_image_times = file_labels.groupby('labels')['time'].apply(
         statistics.median_low)
-
+    print(f'{median_image_times=}')
     for time in median_image_times:
 
         image = cv2.imread(f'{raw_data_dir}/{time}.0.jpg')
         cv2.imwrite(os.path.join(export_path, f'{time}.0.jpg'), image)
+        print(f'{time}.0.jpg' + ' written to' +
+              os.path.join(export_path, f'{time}.0.jpg'))
     os.remove('/tmp/video.mp4')  # Delete tmp resources to free memory

@@ -78,6 +78,9 @@ try:
     if not os.path.exists('raw_data'):
         os.makedirs('raw_data')
 
+    if not os.path.exists('data'):
+        os.makedirs('data')
+
 # if not created then raise error
 except OSError:
     print('Error: Creating directory of data')
