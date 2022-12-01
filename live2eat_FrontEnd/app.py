@@ -77,7 +77,6 @@ except OSError:
 #---------------------------------------------------------------
 
 # select the video and download it
-video_client = vi.VideoIntelligenceServiceClient(credentials=credentials)
 video_uri = video_uri(option, credentials)
 download_video_opencv(video_uri, credentials)
 cam = cv2.VideoCapture('/tmp/video.mp4')
