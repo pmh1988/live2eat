@@ -59,6 +59,12 @@ elif option == 'Video 5':  #Chicken Rice
 
 st.video(video_URL, format="video/mp4", start_time=0)
 
+if option:
+    st.subheader('Video Analysis in Progress........')
+
+else:
+    st.subheader('Please select a video')
+
 st.markdown('#')
 st.markdown('#')
 
@@ -164,7 +170,7 @@ st.markdown('#')
 
 st.title("Dishes detected")
 
-for i, name, calories in list(enumerate(dishes_predicted_list)):
+for i, name, calories, prediction in list(enumerate(dishes_predicted_list)):
     cols = st.columns(3)
 
     for image in dish_images:
