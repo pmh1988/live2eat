@@ -12,10 +12,12 @@ import numpy as np
 import pandas as pd
 import requests
 import streamlit as st
+
 from food_frame_export import *
 from food_frame_extract import *
 from food_prediction import *
 from food_video_selection import *
+
 from google.cloud import storage
 from google.cloud import videointelligence as vi
 from google.oauth2 import service_account
@@ -131,34 +133,35 @@ median_dish(file_labels, raw_data_dir, export_path)
 
 prediction = predict()
 
+# assemble predict results to image, dish name
+#---------------------------------------------------------------
+
+dish_images = sorted(glob.glob(export_path + "/*.jpg"),
+                     key=lambda s: int(s.split('/')[-1].split('.')[0]))
+
+dish_names = [
+    'BAK CHOR MEE', 'CHICKEN RICE', 'CHILLI CRAB', 'HOKKIEN MEE', 'KAYA TOAST'
+]  # based on data.class_indices imagedatagen
+dish_calories = [
+    '511 calories', '607 calories', '1560 calories', '617 calories',
+    '196 calories'
+]
+
 dishes_predicted_df = []
 
 if len(prediction) > 0:
     for i in prediction:
 
-        prediction_df = pd.DataFrame({
-            'dish name': [
-                'BAK CHOR MEE', 'CHICKEN RICE', 'CHILLI CRAB', 'HOKKIEN MEE',
-                'KAYA TOAST'
-            ],
-            'calories': [
-                '511 calories', '607 calories', '1560 calories',
-                '617 calories', '196 calories'
-            ],
-            'prediction':
-            prediction[i]
-        })
-        predicted_dish = prediction_df['prediction'].max()
+        prediction_dict = list(zip(dish_names, dish_calories, prediction[0]))
+        dishes_sorted = sorted(prediction_dict, key=lambda x: x[2])
+        predicted_dish = dishes_sorted[-1]
         dishes_predicted_df.append(predicted_dish)
 
-st.markdown('#')
+# columns=['dish_names', 'dish_calories', 'prediction_score'])
 
 # display results
 #---------------------------------------------------------------
-
-dish_names = dishes_predicted_df['dish name']
-calories = dishes_predicted_df['calories']
-dish_images = dishes_predicted_df['prediction']
+st.markdown('#')
 
 st.title("Dishes detected")
 
@@ -167,16 +170,16 @@ n = st.number_input("Grid Width", 1, 5, 2)
 groups = []
 for i in range(0, len(dish_images), n):
     groups.append(dish_images[i:i + n])
-    groups.append(dish_names[i:i + n])
-    groups.append(calories[i:i + n])
+    # groups.append(dish_names[i:i + n])
+    # groups.append(dish_calories[i:i + n])
 
 for group in groups:
     cols = st.columns(n)
-    for i, image, name in enumerate(group):
-        image = Image.open(os.path.join(export_path, dish_file_name))
+    for i, image in enumerate(group):
+        image = Image.open(image)
         cols[i].image(image)
-        cols[i].text(name)
-        cols[i].text(calories)
+        # cols[i].text(name)
+        # cols[i].text(calories)
         cols[i].checkbox('Select')
 
 st.markdown('#')
