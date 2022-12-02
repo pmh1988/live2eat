@@ -141,7 +141,7 @@ median_dish(file_labels, raw_data_dir, export_path)
 #---------------------------------------------------------------
 
 prediction = predict()
-print(prediction)
+
 
 # map predict results to image, dish name
 #---------------------------------------------------------------
@@ -174,7 +174,7 @@ st.markdown('#')
 
 st.title("Dishes detected")
 
-for i, name, calories, prediction in list(enumerate(dishes_predicted_list)):
+for i, (name, calories, prediction) in list(enumerate(dishes_predicted_list)):
 
     cols = st.columns(len(dishes_predicted_list))
 
