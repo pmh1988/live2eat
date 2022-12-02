@@ -20,12 +20,22 @@ from google.cloud import storage
 from google.cloud import videointelligence as vi
 from google.oauth2 import service_account
 from sklearn.cluster import KMeans
+from PIL import Image
 
+
+
+# specify cloud credentials
+#---------------------------------------------------------------
 st.set_page_config(
     page_title="Live2Eat",
     page_icon="🐍",
     layout="centered",  # wide
     initial_sidebar_state="auto")  # collapsed
+
+
+
+# page header
+#---------------------------------------------------------------
 '''
 # Live2Eat Food Tracking
 Take the hard work out of tracking your food
@@ -33,19 +43,14 @@ Take the hard work out of tracking your food
 '''
 st.markdown('#')
 
-# values = [
-#     'None Selected', 'Bak Chor Mee', 'Hokkien Mee', 'Kaya Toast',
-#     'Chilli Crab', 'Chicken Rice'
-# ]
 
-# default = values.index('None Selected')
-# option = st.sidebar.selectbox('Please select a video', values, index=default)
 
+
+# video selection
+#---------------------------------------------------------------
 option = st.selectbox('Please select a video',
                       ('Video 1', 'Video 2', 'Video 3', 'Video 4', 'Video 5'))
 
-if option == 'None Selected':
-    video_URL = 'https://www.youtube.com/watch?v=q2uXv0LZJuQ&t=4s'
 if option == 'Video 1':  # Bak Chor Mee
     video_URL = 'https://www.youtube.com/watch?v=V4GR-TcqYkk'
 if option == 'Video 3':  # Kaya Toast
@@ -62,12 +67,20 @@ st.video(video_URL, format="video/mp4", start_time=0)
 st.markdown('#')
 st.markdown('#')
 
+
+
+
+# specify cloud credentials
+#---------------------------------------------------------------
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets['gcp_service_account'])
 
-#---------------------------------------------------------------
+
+
 
 # specify local folder locations
+#---------------------------------------------------------------
+
 dir = os.getcwd()
 raw_data_dir = f'{dir}/raw_data'
 export_path = f'{dir}/data/predict_images'
@@ -84,9 +97,11 @@ try:
 except OSError:
     print('Error: Creating directory of data')
 
-#---------------------------------------------------------------
+
+
 
 # select the video and download it
+#---------------------------------------------------------------
 video_uri = video_uri(option, credentials)
 download_video_opencv(video_uri, credentials)
 
@@ -94,9 +109,12 @@ video_path = os.path.join(os.getcwd(), 'video.mp4')
 print('Reading video from: ', video_path)
 cam = cv2.VideoCapture(video_path)
 
-#---------------------------------------------------------------
+
+
 
 # googleVideointelligence API video frames extract
+#---------------------------------------------------------------
+
 results = track_objects(video_uri, credentials)
 
 with open("results.p", "wb") as f:
@@ -109,13 +127,11 @@ food_entity_id = '/m/02wbm'
 food_times = print_object_frames(results, food_entity_id)
 food_times = sorted(set(food_times))[::5]
 
-# with open('food_times.csv', 'w') as f:
-#     for timing in food_times:
-#         f.write(str(timing) + '\n')
-#     f.close()
 
-#---------------------------------------------------------------
+
+
 # video frames export
+#---------------------------------------------------------------
 
 print('Current Dir: ', os.getcwd())
 capture_images(food_times, cam, raw_data_dir)
@@ -132,48 +148,64 @@ resized_dishes_2d = create_reshaped_dish_list(resized_dishes)
 file_labels = dish_clustering_dataframe(resized_dishes_2d, sorted_dishes)
 median_dish(file_labels, raw_data_dir, export_path)
 
-#---------------------------------------------------------------
+
+
 
 # model predict dishes
+#---------------------------------------------------------------
 
 prediction = predict()
 
+prediction_df = pd.DataFrame({
+    'dish name': [
+        'BAK CHOR MEE', 'CHICKEN RICE', 'CHILLI CRAB', 'HOKKIEN MEE',
+        'KAYA TOAST'
+    ],
+    'calories':['511 calories', '607 calories', '1560 calories', '617 calories', '196 calories'],
+    'prediction': prediction[0]
+})
+prediction_df_sorted = prediction_df.sort_values(by='prediction', ascending=False)
+
+st.markdown('#')
+
+
+# display results
 #---------------------------------------------------------------
-st.markdown('#')
-st.markdown('#')
 
-with st.container():
-    col1, col2, col3, col4 = st.columns(4)
+dishes_predicted_names=prediction_df_sorted[0]
+calories=prediction_df_sorted[2]
+dish_images=prediction_df_sorted[1]
 
-    with col1:
-        st.title('**Bak Chor Mee**')
-        st.checkbox('Select', key=1)
-        st.image("https://static.streamlit.io/examples/cat.jpg")
-        st.header('Calorie: 50')
 
-    with col2:
-        st.title('**Kaya Toast**')
-        st.checkbox('Select', key=2)
-        st.image("https://static.streamlit.io/examples/dog.jpg")
-        st.header('Calorie: 50')
+st.title("Dishes detected")
 
-    with col3:
-        st.title('**Chicken Rice**')
-        st.checkbox('Select', key=3)
-        st.image("https://static.streamlit.io/examples/owl.jpg")
-        st.header('Calorie: 50')
+@st.cache(allow_output_mutation=True)
 
-    with col4:
-        st.title('**Hokkien Mee**')
-        st.checkbox('Select', key=4)
-        st.image("https://static.streamlit.io/examples/owl.jpg")
-        st.header('Calorie: 50')
+n = st.number_input("Grid Width", 1, 5, 2)
+
+groups = []
+for i in range(0, len(dish_images), n):
+    groups.append(dish_images[i:i+n])
+    groups.append(dishes_predicted_names[i:i+n])
+    groups.append(calories[i:i+n])
+
+for group in groups:
+    cols = st.columns(n)
+    for i, image, name in enumerate(group):
+        image=Image.open(os.path.join(export_path, dish_file_name))
+        cols[i].image(image)
+        cols[i].text(name)
+        cols[i].text(calories)
+
 
 st.markdown('#')
 st.markdown('#')
+
+
+
+
+# log food selected
+#---------------------------------------------------------------
 
 if st.button('Submit'):
     st.success("Your choice has been submitted!")
-
-else:
-    st.write('Please make a choice')

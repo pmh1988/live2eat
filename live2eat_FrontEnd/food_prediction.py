@@ -15,4 +15,5 @@ def predict():
                                                     class_mode='categorical')
 
     result = model.predict(predict_data)
+    print(result)
     return result
