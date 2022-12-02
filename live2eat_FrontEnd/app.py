@@ -57,6 +57,8 @@ if option == 'Video 4':  # Chilli Crab
 elif option == 'Video 5':  #Chicken Rice
     video_URL = 'https://www.youtube.com/watch?v=S3UJD08RrFQ'
 
+st.markdown('#')
+
 st.video(video_URL, format="video/mp4", start_time=0)
 
 if option:
@@ -171,7 +173,8 @@ st.markdown('#')
 st.title("Dishes detected")
 
 for i, name, calories, prediction in list(enumerate(dishes_predicted_list)):
-    cols = st.columns(3)
+
+    cols = st.columns(len(dishes_predicted_list))
 
     for image in dish_images:
         image = Image.open(image)
