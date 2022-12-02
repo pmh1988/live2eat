@@ -163,8 +163,9 @@ dishes_predicted_list = []
 if len(prediction) > 0:
     for i in prediction:
 
-        prediction_dict = list(zip(dish_names, dish_calories, prediction[0]))
-        dishes_sorted = sorted(prediction_dict, key=lambda x: x[2])
+        prediction_dict = list(
+            zip(dish_names, dish_calories, dish_images, prediction[0]))
+        dishes_sorted = sorted(prediction_dict, key=lambda x: x[3])
         predicted_dish = dishes_sorted[-1]
         dishes_predicted_list.append(predicted_dish)
 
@@ -174,17 +175,16 @@ st.markdown('#')
 
 st.title("Dishes detected")
 
-for i, (name, calories, prediction) in list(enumerate(dishes_predicted_list)):
+for i, (name, calories, dish_images,
+        prediction) in list(enumerate(dishes_predicted_list)):
 
     cols = st.columns(len(dishes_predicted_list))
 
-    for image in dish_images:
-        image = Image.open(image)
-
-        cols[i].image(image)
-        cols[i].text(name)
-        cols[i].text(calories)
-        cols[i].checkbox('Select', key=i)
+    image_opened = Image.open(dish_images)
+    cols[i].image(image_opened)
+    cols[i].text(name)
+    cols[i].text(calories)
+    cols[i].checkbox('Select', key=i)
 
 st.markdown('#')
 st.markdown('#')
