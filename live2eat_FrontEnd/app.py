@@ -181,10 +181,10 @@ for i, (name, calories, prediction) in list(enumerate(dishes_predicted_list)):
     for image in dish_images:
         image = Image.open(image)
 
-    cols[i].image(image)
-    cols[i].text(name)
-    cols[i].text(calories)
-    cols[i].checkbox('Select', key=i)
+        cols[i].image(image)
+        cols[i].text(name)
+        cols[i].text(calories)
+        cols[i].checkbox('Select', key=i)
 
 st.markdown('#')
 st.markdown('#')
