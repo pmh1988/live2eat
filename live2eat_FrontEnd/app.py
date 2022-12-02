@@ -165,7 +165,7 @@ st.markdown('#')
 
 st.title("Dishes detected")
 
-n = st.number_input("Grid Width", 1, 5, 2)
+n = 3
 
 groups = []
 for i in range(0, len(dish_images), n):
