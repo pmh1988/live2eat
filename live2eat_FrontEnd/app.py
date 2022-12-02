@@ -58,6 +58,7 @@ elif option == 'Video 5':  #Chicken Rice
     video_URL = 'https://www.youtube.com/watch?v=S3UJD08RrFQ'
 
 st.markdown('#')
+st.markdown('#')
 
 st.video(video_URL, format="video/mp4", start_time=0)
 
@@ -140,6 +141,7 @@ median_dish(file_labels, raw_data_dir, export_path)
 #---------------------------------------------------------------
 
 prediction = predict()
+print(prediction)
 
 # map predict results to image, dish name
 #---------------------------------------------------------------
