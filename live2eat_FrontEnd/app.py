@@ -175,10 +175,10 @@ st.markdown('#')
 
 st.title("Dishes detected")
 
+cols = st.columns(len(dishes_predicted_list))
+
 for i, (name, calories, dish_images,
         prediction) in list(enumerate(dishes_predicted_list)):
-
-    cols = st.columns(len(dishes_predicted_list))
 
     image_opened = Image.open(dish_images)
     cols[i].image(image_opened)
