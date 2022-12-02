@@ -131,29 +131,34 @@ median_dish(file_labels, raw_data_dir, export_path)
 
 prediction = predict()
 
-prediction_df = pd.DataFrame({
-    'dish name': [
-        'BAK CHOR MEE', 'CHICKEN RICE', 'CHILLI CRAB', 'HOKKIEN MEE',
-        'KAYA TOAST'
-    ],
-    'calories': [
-        '511 calories', '607 calories', '1560 calories', '617 calories',
-        '196 calories'
-    ],
-    'prediction':
-    prediction[0]
-})
-prediction_df_sorted = prediction_df.sort_values(by='prediction',
-                                                 ascending=False)
+dishes_predicted_df = []
+
+if len(prediction) > 0:
+    for i in prediction:
+
+        prediction_df = pd.DataFrame({
+            'dish name': [
+                'BAK CHOR MEE', 'CHICKEN RICE', 'CHILLI CRAB', 'HOKKIEN MEE',
+                'KAYA TOAST'
+            ],
+            'calories': [
+                '511 calories', '607 calories', '1560 calories',
+                '617 calories', '196 calories'
+            ],
+            'prediction':
+            prediction[i]
+        })
+        predicted_dish = prediction_df['prediction'].max()
+        dishes_predicted_df.append(predicted_dish)
 
 st.markdown('#')
 
 # display results
 #---------------------------------------------------------------
 
-dishes_predicted_names = prediction_df_sorted[0]
-calories = prediction_df_sorted[2]
-dish_images = prediction_df_sorted[1]
+dish_names = dishes_predicted_df['dish name']
+calories = dishes_predicted_df['calories']
+dish_images = dishes_predicted_df['prediction']
 
 st.title("Dishes detected")
 
@@ -162,7 +167,7 @@ n = st.number_input("Grid Width", 1, 5, 2)
 groups = []
 for i in range(0, len(dish_images), n):
     groups.append(dish_images[i:i + n])
-    groups.append(dishes_predicted_names[i:i + n])
+    groups.append(dish_names[i:i + n])
     groups.append(calories[i:i + n])
 
 for group in groups:
