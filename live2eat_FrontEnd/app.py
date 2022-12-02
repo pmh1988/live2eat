@@ -164,7 +164,7 @@ if len(prediction) > 0:
     for i in prediction:
 
         prediction_dict = list(
-            zip(dish_names, dish_calories, dish_images, prediction[0][0]))
+            zip(dish_names, dish_calories, dish_images, prediction[0]))
         dishes_sorted = sorted(prediction_dict, key=lambda x: x[3])
         predicted_dish = dishes_sorted[-1]
         dishes_predicted_list.append(predicted_dish)
