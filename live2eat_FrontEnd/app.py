@@ -147,27 +147,27 @@ with st.container():
 
     with col1:
         st.title('**Bak Chor Mee**')
+        st.checkbox('Select', key=1)
         st.image("https://static.streamlit.io/examples/cat.jpg")
         st.header('Calorie: 50')
-        st.checkbox('Register your calorie')
 
     with col2:
         st.title('**Kaya Toast**')
+        st.checkbox('Select', key=2)
         st.image("https://static.streamlit.io/examples/dog.jpg")
         st.header('Calorie: 50')
-        st.checkbox('Register your calorie')
 
     with col3:
         st.title('**Chicken Rice**')
+        st.checkbox('Select', key=3)
         st.image("https://static.streamlit.io/examples/owl.jpg")
         st.header('Calorie: 50')
-        st.checkbox('Register your calorie')
 
     with col4:
         st.title('**Hokkien Mee**')
+        st.checkbox('Select', key=4)
         st.image("https://static.streamlit.io/examples/owl.jpg")
         st.header('Calorie: 50')
-        st.checkbox('Register your calorie')
 
 st.markdown('#')
 st.markdown('#')
