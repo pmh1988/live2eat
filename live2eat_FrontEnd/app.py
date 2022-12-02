@@ -42,20 +42,20 @@ st.markdown('#')
 # option = st.sidebar.selectbox('Please select a video', values, index=default)
 
 option = st.selectbox('Please select a video',
-                      ('Bak Chor Mee', 'Hokkien Mee', 'Kaya Toast', 'Laksa',
-                       'Chilli Crab', 'Chicken Rice'))
+                      ('Video 1', 'Video 2', 'Video 3',
+                       'Video 4', 'Video 5'))
 
 if option == 'None Selected':
     video_URL = 'https://www.youtube.com/watch?v=q2uXv0LZJuQ&t=4s'
-if option == 'Bak Chor Mee':
+if option == 'Video 1': # Bak Chor Mee
     video_URL = 'https://www.youtube.com/watch?v=V4GR-TcqYkk'
-if option == 'Kaya Toast':
+if option == 'Video 3': # Kaya Toast
     video_URL = 'https://www.youtube.com/watch?v=7R-iTYFaS6A'
-if option == 'Hokkien Mee':
+if option == 'Video 2': # Hokkien Mee
     video_URL = 'https://www.youtube.com/watch?v=3zH2Hw4EE_U'
-if option == 'Chilli Crab':
+if option == 'Video 4': # Chilli Crab
     video_URL = 'https://www.youtube.com/watch?v=g--tLRttm18'
-elif option == 'Chicken Rice':
+elif option == 'Video 5': #Chicken Rice
     video_URL = 'https://www.youtube.com/watch?v=S3UJD08RrFQ'
 
 st.video(video_URL, format="video/mp4", start_time=0)

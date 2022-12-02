@@ -19,15 +19,15 @@ from google.cloud import storage
 
 def video_uri(option, credentials):
     video_client = vi.VideoIntelligenceServiceClient(credentials=credentials)
-    if option == 'Bak Chor Mee':
+    if option == 'Video 1':
         video_uri = 'gs://live2eat-bootcamp/Dish Videos/Bak Chor Mee.mp4'
-    if option == 'Hokkien Mee':
+    if option == 'Video 2':
         video_uri = 'gs://live2eat-bootcamp/Dish Videos/Hokkien Mee.mp4'
-    if option == 'Kaya Toast':
+    if option == 'Video 3':
         video_uri = 'gs://live2eat-bootcamp/Dish Videos/Kaya Toast.mp4'
-    if option == 'Chicken Rice':
+    if option == 'Video 5':
         video_uri = 'gs://live2eat-bootcamp/Dish Videos/Chicken Rice.mp4'
-    elif option == 'Chilli Crab':
+    elif option == 'Video 4':
         video_uri = 'gs://live2eat-bootcamp/Dish Videos/Chilli Crab.mp4'
 
     return video_uri
