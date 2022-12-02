@@ -14,7 +14,7 @@ def predict():
                                                     shuffle=False,
                                                     class_mode='categorical')
 
-    print(test_datagen.filepaths)
+    print(predict_data.filepaths)
     result = model.predict(predict_data)
     print(result)
     return result
