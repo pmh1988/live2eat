@@ -142,12 +142,13 @@ dish_images = sorted(glob.glob(export_path + "/*.jpg"),
 dish_names = [
     'BAK CHOR MEE', 'CHICKEN RICE', 'CHILLI CRAB', 'HOKKIEN MEE', 'KAYA TOAST'
 ]  # based on data.class_indices imagedatagen
+
 dish_calories = [
     '511 calories', '607 calories', '1560 calories', '617 calories',
     '196 calories'
 ]
 
-dishes_predicted_df = []
+dishes_predicted_list = []
 
 if len(prediction) > 0:
     for i in prediction:
@@ -155,9 +156,7 @@ if len(prediction) > 0:
         prediction_dict = list(zip(dish_names, dish_calories, prediction[0]))
         dishes_sorted = sorted(prediction_dict, key=lambda x: x[2])
         predicted_dish = dishes_sorted[-1]
-        dishes_predicted_df.append(predicted_dish)
-
-# columns=['dish_names', 'dish_calories', 'prediction_score'])
+        dishes_predicted_list.append(predicted_dish)
 
 # display results
 #---------------------------------------------------------------
@@ -165,24 +164,16 @@ st.markdown('#')
 
 st.title("Dishes detected")
 
-n = 3
+for i, name, calories in list(enumerate(dishes_predicted_list)):
+    cols = st.columns(3)
 
-groups = []
-for i in range(0, len(dish_images), n):
-    groups.append(dish_images[i:i + n])
-    # groups.append(dish_names[i:i + n])
-    # groups.append(dish_calories[i:i + n])
-
-for group in groups:
-    counter=0
-    cols = st.columns(n)
-    for i, image in enumerate(group):
+    for image in dish_images:
         image = Image.open(image)
-        cols[i].image(image)
-        # cols[i].text(name)
-        # cols[i].text(calories)
-        cols[i].checkbox('Select', key=counter)
-        counter +- 1
+
+    cols[i].image(image)
+    cols[i].text(name)
+    cols[i].text(calories)
+    cols[i].checkbox('Select', key=i)
 
 st.markdown('#')
 st.markdown('#')
