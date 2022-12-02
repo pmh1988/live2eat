@@ -42,20 +42,19 @@ st.markdown('#')
 # option = st.sidebar.selectbox('Please select a video', values, index=default)
 
 option = st.selectbox('Please select a video',
-                      ('Video 1', 'Video 2', 'Video 3',
-                       'Video 4', 'Video 5'))
+                      ('Video 1', 'Video 2', 'Video 3', 'Video 4', 'Video 5'))
 
 if option == 'None Selected':
     video_URL = 'https://www.youtube.com/watch?v=q2uXv0LZJuQ&t=4s'
-if option == 'Video 1': # Bak Chor Mee
+if option == 'Video 1':  # Bak Chor Mee
     video_URL = 'https://www.youtube.com/watch?v=V4GR-TcqYkk'
-if option == 'Video 3': # Kaya Toast
+if option == 'Video 3':  # Kaya Toast
     video_URL = 'https://www.youtube.com/watch?v=7R-iTYFaS6A'
-if option == 'Video 2': # Hokkien Mee
+if option == 'Video 2':  # Hokkien Mee
     video_URL = 'https://www.youtube.com/watch?v=3zH2Hw4EE_U'
-if option == 'Video 4': # Chilli Crab
+if option == 'Video 4':  # Chilli Crab
     video_URL = 'https://www.youtube.com/watch?v=g--tLRttm18'
-elif option == 'Video 5': #Chicken Rice
+elif option == 'Video 5':  #Chicken Rice
     video_URL = 'https://www.youtube.com/watch?v=S3UJD08RrFQ'
 
 st.video(video_URL, format="video/mp4", start_time=0)
@@ -150,25 +149,25 @@ with st.container():
         st.title('**Bak Chor Mee**')
         st.image("https://static.streamlit.io/examples/cat.jpg")
         st.header('Calorie: 50')
-        st.button('Register your calorie')
+        st.checkbox('Register your calorie')
 
     with col2:
         st.title('**Kaya Toast**')
         st.image("https://static.streamlit.io/examples/dog.jpg")
         st.header('Calorie: 50')
-        st.button('Register your calorie')
+        st.checkbox('Register your calorie')
 
     with col3:
         st.title('**Chicken Rice**')
         st.image("https://static.streamlit.io/examples/owl.jpg")
         st.header('Calorie: 50')
-        st.button('Register your calorie')
+        st.checkbox('Register your calorie')
 
     with col4:
         st.title('**Hokkien Mee**')
         st.image("https://static.streamlit.io/examples/owl.jpg")
         st.header('Calorie: 50')
-        st.button('Register your calorie')
+        st.checkbox('Register your calorie')
 
 st.markdown('#')
 st.markdown('#')
