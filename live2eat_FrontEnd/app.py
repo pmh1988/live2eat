@@ -196,6 +196,7 @@ for group in groups:
         cols[i].image(image)
         cols[i].text(name)
         cols[i].text(calories)
+        cols[i].checkbox('Select')
 
 
 st.markdown('#')
