@@ -133,7 +133,7 @@ median_dish(file_labels, raw_data_dir, export_path)
 
 prediction = predict()
 
-# assemble predict results to image, dish name
+# map predict results to image, dish name
 #---------------------------------------------------------------
 
 dish_images = sorted(glob.glob(export_path + "/*.jpg"),
@@ -174,13 +174,15 @@ for i in range(0, len(dish_images), n):
     # groups.append(dish_calories[i:i + n])
 
 for group in groups:
+    counter=0
     cols = st.columns(n)
     for i, image in enumerate(group):
         image = Image.open(image)
         cols[i].image(image)
         # cols[i].text(name)
         # cols[i].text(calories)
-        cols[i].checkbox('Select')
+        cols[i].checkbox('Select', key=counter)
+        counter +- 1
 
 st.markdown('#')
 st.markdown('#')
