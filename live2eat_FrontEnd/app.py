@@ -22,8 +22,6 @@ from google.oauth2 import service_account
 from sklearn.cluster import KMeans
 from PIL import Image
 
-
-
 # specify cloud credentials
 #---------------------------------------------------------------
 st.set_page_config(
@@ -31,8 +29,6 @@ st.set_page_config(
     page_icon="🐍",
     layout="centered",  # wide
     initial_sidebar_state="auto")  # collapsed
-
-
 
 # page header
 #---------------------------------------------------------------
@@ -42,9 +38,6 @@ Take the hard work out of tracking your food
 
 '''
 st.markdown('#')
-
-
-
 
 # video selection
 #---------------------------------------------------------------
@@ -67,16 +60,10 @@ st.video(video_URL, format="video/mp4", start_time=0)
 st.markdown('#')
 st.markdown('#')
 
-
-
-
 # specify cloud credentials
 #---------------------------------------------------------------
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets['gcp_service_account'])
-
-
-
 
 # specify local folder locations
 #---------------------------------------------------------------
@@ -97,9 +84,6 @@ try:
 except OSError:
     print('Error: Creating directory of data')
 
-
-
-
 # select the video and download it
 #---------------------------------------------------------------
 video_uri = video_uri(option, credentials)
@@ -108,9 +92,6 @@ download_video_opencv(video_uri, credentials)
 video_path = os.path.join(os.getcwd(), 'video.mp4')
 print('Reading video from: ', video_path)
 cam = cv2.VideoCapture(video_path)
-
-
-
 
 # googleVideointelligence API video frames extract
 #---------------------------------------------------------------
@@ -126,9 +107,6 @@ with open("results.p", "rb") as f:
 food_entity_id = '/m/02wbm'
 food_times = print_object_frames(results, food_entity_id)
 food_times = sorted(set(food_times))[::5]
-
-
-
 
 # video frames export
 #---------------------------------------------------------------
@@ -148,9 +126,6 @@ resized_dishes_2d = create_reshaped_dish_list(resized_dishes)
 file_labels = dish_clustering_dataframe(resized_dishes_2d, sorted_dishes)
 median_dish(file_labels, raw_data_dir, export_path)
 
-
-
-
 # model predict dishes
 #---------------------------------------------------------------
 
@@ -161,49 +136,46 @@ prediction_df = pd.DataFrame({
         'BAK CHOR MEE', 'CHICKEN RICE', 'CHILLI CRAB', 'HOKKIEN MEE',
         'KAYA TOAST'
     ],
-    'calories':['511 calories', '607 calories', '1560 calories', '617 calories', '196 calories'],
-    'prediction': prediction[0]
+    'calories': [
+        '511 calories', '607 calories', '1560 calories', '617 calories',
+        '196 calories'
+    ],
+    'prediction':
+    prediction[0]
 })
-prediction_df_sorted = prediction_df.sort_values(by='prediction', ascending=False)
+prediction_df_sorted = prediction_df.sort_values(by='prediction',
+                                                 ascending=False)
 
 st.markdown('#')
-
 
 # display results
 #---------------------------------------------------------------
 
-dishes_predicted_names=prediction_df_sorted[0]
-calories=prediction_df_sorted[2]
-dish_images=prediction_df_sorted[1]
-
+dishes_predicted_names = prediction_df_sorted[0]
+calories = prediction_df_sorted[2]
+dish_images = prediction_df_sorted[1]
 
 st.title("Dishes detected")
-
-@st.cache(allow_output_mutation=True)
 
 n = st.number_input("Grid Width", 1, 5, 2)
 
 groups = []
 for i in range(0, len(dish_images), n):
-    groups.append(dish_images[i:i+n])
-    groups.append(dishes_predicted_names[i:i+n])
-    groups.append(calories[i:i+n])
+    groups.append(dish_images[i:i + n])
+    groups.append(dishes_predicted_names[i:i + n])
+    groups.append(calories[i:i + n])
 
 for group in groups:
     cols = st.columns(n)
     for i, image, name in enumerate(group):
-        image=Image.open(os.path.join(export_path, dish_file_name))
+        image = Image.open(os.path.join(export_path, dish_file_name))
         cols[i].image(image)
         cols[i].text(name)
         cols[i].text(calories)
         cols[i].checkbox('Select')
 
-
 st.markdown('#')
 st.markdown('#')
-
-
-
 
 # log food selected
 #---------------------------------------------------------------
