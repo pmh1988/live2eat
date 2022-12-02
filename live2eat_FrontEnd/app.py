@@ -141,6 +141,7 @@ median_dish(file_labels, raw_data_dir, export_path)
 #---------------------------------------------------------------
 
 prediction = predict()
+prediction = prediction[0]
 print(f'number of predictions is {len(prediction)}')
 
 # map predict results to image, dish name
@@ -163,10 +164,14 @@ dishes_predicted_list = []
 if len(prediction) > 0:
     for i in prediction:
 
-        prediction_dict = list(
-            zip(dish_names, dish_calories, dish_images, prediction[0]))
-        dishes_sorted = sorted(prediction_dict, key=lambda x: x[3])
-        predicted_dish = dishes_sorted[-1]
+        prediction_dict = [{
+            'dish_images': dish_images,
+            'dish_names': dish_names,
+            'dish_calories': dish_calories,
+            'prediction': prediction
+        } for dish_images, dish_names, dish_calories, prediction in zip(
+            dish_images, dish_names, dish_calories, prediction)]
+        predicted_dish = max(prediction_dict, key=lambda x: x['prediction'])
         dishes_predicted_list.append(predicted_dish)
 
 # display results
@@ -177,13 +182,12 @@ st.title("Dishes detected")
 
 cols = st.columns(len(dishes_predicted_list))
 
-for i, (name, calories, dish_images,
-        prediction) in list(enumerate(dishes_predicted_list)):
+for dic in dishes_predicted_list:
 
-    image_opened = Image.open(dish_images)
+    image_opened = Image.open(dic['dish_images'])
     cols[i].image(image_opened)
-    cols[i].text(name)
-    cols[i].text(calories)
+    cols[i].text(dic['dish_names'])
+    cols[i].text(dic['dish_calories'])
     cols[i].checkbox('Select', key=i)
 
 st.markdown('#')
