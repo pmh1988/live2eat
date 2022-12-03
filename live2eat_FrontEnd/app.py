@@ -144,8 +144,7 @@ print(f'number of predictions is {len(prediction)}')
 # map predict results to image, dish name
 #---------------------------------------------------------------
 
-dish_images = sorted(glob.glob(
-    os.path.join(os.getcwd() + '/data/predict_images' + '/*.jpg')),
+dish_images = sorted(glob.glob(os.path.join(export_path + '/*.jpg')),
                      key=lambda s: int(s.split('/')[-1].split('.')[0]))
 
 dish_names = [
@@ -158,19 +157,20 @@ dish_calories = [
 ]
 
 dishes_predicted_list = []
-
 if len(prediction) > 0:
     for i in prediction:
 
         prediction_dict = [{
-            'dish_images': dish_images,
             'dish_names': dish_names,
             'dish_calories': dish_calories,
             'prediction': prediction
-        } for dish_images, dish_names, dish_calories, prediction in zip(
-            dish_images, dish_names, dish_calories, prediction)]
+        } for dish_names, dish_calories, prediction in zip(
+            dish_names, dish_calories, prediction)]
         predicted_dish = max(prediction_dict, key=lambda x: x['prediction'])
         dishes_predicted_list.append(predicted_dish)
+
+        for image in dish_images:
+            dishes_predicted_list['dish_images'] = image
 
 # display results
 #---------------------------------------------------------------
