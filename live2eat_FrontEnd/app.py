@@ -169,8 +169,8 @@ if len(prediction) > 0:
         predicted_dish = max(prediction_dict, key=lambda x: x['prediction'])
         dishes_predicted_list.append(predicted_dish)
 
-            for image in dish_images:
-                dishes_predicted_list['dish_images'] = image
+for image in dish_images:
+    dishes_predicted_list['dish_images'] = image
 
 # display results
 #---------------------------------------------------------------
