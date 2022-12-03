@@ -138,7 +138,7 @@ median_dish(file_labels, raw_data_dir, export_path)
 #---------------------------------------------------------------
 
 prediction = predict()
-prediction = prediction[0]
+prediction = prediction[0][0]
 print(f'number of predictions is {len(prediction)}')
 
 # map predict results to image, dish name
