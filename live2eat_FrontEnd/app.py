@@ -139,7 +139,7 @@ median_dish(file_labels, raw_data_dir, export_path)
 
 prediction = predict()
 print(f'the results of the predictions is {prediction}')
-print(f'the type of the prediction resutls is type({prediction})')
+print(f'the type of the prediction resutls is{type(prediction)})')
 
 # map predict results to image, dish name
 #---------------------------------------------------------------
