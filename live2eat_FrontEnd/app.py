@@ -170,8 +170,8 @@ if len(prediction) > 0:
         predicted_dish = max(prediction_dict, key=lambda x: x['prediction'])
         dishes_predicted_list.append(predicted_dish)
 
-    for i, image in list(enumerate(dish_images)):
-        dishes_predicted_list['dish_images'] = image
+    # for i, image in enumerate(dish_images):
+    #     dishes_predicted_list['dish_images'] = image
 
 # display results
 #---------------------------------------------------------------
@@ -183,8 +183,8 @@ cols = st.columns(len(dishes_predicted_list))
 
 for i, dic in enumerate(dishes_predicted_list):
 
-    image_opened = Image.open(dic['dish_images'])
-    cols[i].image(image_opened)
+    # image_opened = Image.open(dic['dish_images'])
+    # cols[i].image(image_opened)
     cols[i].text(dic['dish_names'])
     cols[i].text(dic['dish_calories'])
     cols[i].checkbox('Select', key=i)
