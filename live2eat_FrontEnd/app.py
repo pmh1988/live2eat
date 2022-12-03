@@ -137,41 +137,44 @@ median_dish(file_labels, raw_data_dir, export_path)
 # model predict dishes
 #---------------------------------------------------------------
 
-prediction = predict()
-print(f'the results of the predictions is {prediction}')
-print(f'the type of the prediction resutls is{type(prediction)})')
+prediction = np.array(predict()[0])
+dish_images = predict()[1]
+prediction_argmax = prediction.argmax(1)
+
+print(f'the filepaths of predicted dish_images is {dish_images}')
+
 
 # map predict results to image, dish name
 #---------------------------------------------------------------
 
-dish_images = list(
-    sorted(glob.glob(os.path.join(export_path + '/*.jpg')),
-           key=lambda s: int(s.split('/')[-1].split('.')[0])))
 
-dish_names = [
+# dish_images = list(
+#     sorted(glob.glob(os.path.join(export_path + '/*.jpg')),
+#            key=lambda s: int(s.split('/')[-1].split('.')[0])))
+
+dish_names = np.array([
     'BAK CHOR MEE', 'CHICKEN RICE', 'CHILLI CRAB', 'HOKKIEN MEE', 'KAYA TOAST'
-]  # based on data.class_indices imagedatagen
+])  # based on data.class_indices imagedatagen
+
 
 dish_calories = [
     '511 calories', '607 calories', '1560 calories', '617 calories',
     '196 calories'
-]
+])
 
-dishes_predicted_list = []
-if len(prediction) > 0:
-    for i in prediction:
+predicted_dishes=dish_names[prediction_argmax]
+print(f'the list of predicted_dishes is {predicted_dishes}')
 
-        prediction_dict = [{
-            'dish_names': dish_names,
-            'dish_calories': dish_calories,
-            'prediction': prediction
-        } for dish_names, dish_calories, prediction in zip(
-            dish_names, dish_calories, prediction)]
-        predicted_dish = max(prediction_dict, key=lambda x: x['prediction'])
-        dishes_predicted_list.append(predicted_dish)
+food_dictionary = dict(zip(dish_names,dish_calories))
+print(f'the food dictionary of predicted_dishes is {food_dictionary}')
 
-    # for i, image in enumerate(dish_images):
-    #     dishes_predicted_list['dish_images'] = image
+predicted_calories = list(map(food_dictionary.get,predicted_dishes))
+print(f'the calories of predicted dishes is {predicted_calories}')
+
+dishes_predicted_list = list(zip(predicted_dishes,predicted_calories,dish_images ))
+print(f'the fill list of predicted dishes to display is {dishes_predicted_list}')
+
+
 
 # display results
 #---------------------------------------------------------------
@@ -181,12 +184,12 @@ st.title("Dishes detected")
 
 cols = st.columns(len(dishes_predicted_list))
 
-for i, dic in enumerate(dishes_predicted_list):
+for i, (predicted_dishes,predicted_calories,dish_images ) in enumerate(dishes_predicted_list):
 
-    # image_opened = Image.open(dic['dish_images'])
-    # cols[i].image(image_opened)
-    cols[i].text(dic['dish_names'])
-    cols[i].text(dic['dish_calories'])
+    image_opened = Image.open(dish_images)
+    cols[i].image(image_opened)
+    cols[i].text(predicted_dishes)
+    cols[i].text(predicted_calories)
     cols[i].checkbox('Select', key=i)
 
 st.markdown('#')
