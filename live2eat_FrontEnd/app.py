@@ -58,7 +58,6 @@ elif option == 'Video 5':  #Chicken Rice
     video_URL = 'https://www.youtube.com/watch?v=S3UJD08RrFQ'
 
 st.markdown('#')
-st.markdown('#')
 
 st.video(video_URL, format="video/mp4", start_time=0)
 
@@ -68,7 +67,6 @@ if option:
 else:
     st.subheader('Please select a video')
 
-st.markdown('#')
 st.markdown('#')
 
 # specify cloud credentials
@@ -141,7 +139,7 @@ median_dish(file_labels, raw_data_dir, export_path)
 #---------------------------------------------------------------
 
 prediction = predict()
-prediction = prediction[0]
+prediction = prediction[0][0]
 print(f'number of predictions is {len(prediction)}')
 
 # map predict results to image, dish name
