@@ -143,10 +143,8 @@ prediction_argmax = prediction.argmax(1)
 
 print(f'the filepaths of predicted dish_images is {dish_images}')
 
-
 # map predict results to image, dish name
 #---------------------------------------------------------------
-
 
 # dish_images = list(
 #     sorted(glob.glob(os.path.join(export_path + '/*.jpg')),
@@ -156,25 +154,24 @@ dish_names = np.array([
     'BAK CHOR MEE', 'CHICKEN RICE', 'CHILLI CRAB', 'HOKKIEN MEE', 'KAYA TOAST'
 ])  # based on data.class_indices imagedatagen
 
-
 dish_calories = [
     '511 calories', '607 calories', '1560 calories', '617 calories',
     '196 calories'
-])
 
-predicted_dishes=dish_names[prediction_argmax]
+
+predicted_dishes = dish_names[prediction_argmax]
 print(f'the list of predicted_dishes is {predicted_dishes}')
 
-food_dictionary = dict(zip(dish_names,dish_calories))
+food_dictionary = dict(zip(dish_names, dish_calories))
 print(f'the food dictionary of predicted_dishes is {food_dictionary}')
 
-predicted_calories = list(map(food_dictionary.get,predicted_dishes))
+predicted_calories = list(map(food_dictionary.get, predicted_dishes))
 print(f'the calories of predicted dishes is {predicted_calories}')
 
-dishes_predicted_list = list(zip(predicted_dishes,predicted_calories,dish_images ))
-print(f'the fill list of predicted dishes to display is {dishes_predicted_list}')
-
-
+dishes_predicted_list = list(
+    zip(predicted_dishes, predicted_calories, dish_images))
+print(
+    f'the fill list of predicted dishes to display is {dishes_predicted_list}')
 
 # display results
 #---------------------------------------------------------------
@@ -184,7 +181,8 @@ st.title("Dishes detected")
 
 cols = st.columns(len(dishes_predicted_list))
 
-for i, (predicted_dishes,predicted_calories,dish_images ) in enumerate(dishes_predicted_list):
+for i, (predicted_dishes, predicted_calories,
+        dish_images) in enumerate(dishes_predicted_list):
 
     image_opened = Image.open(dish_images)
     cols[i].image(image_opened)
