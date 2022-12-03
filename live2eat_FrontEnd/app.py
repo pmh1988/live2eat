@@ -170,7 +170,7 @@ if len(prediction) > 0:
         dishes_predicted_list.append(predicted_dish)
 
 for image in dish_images:
-    dishes_predicted_list['dish_images'] = image
+    dishes_predicted_list[int('dish_images')] = image
 
 # display results
 #---------------------------------------------------------------
