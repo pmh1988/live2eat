@@ -144,8 +144,9 @@ print(f'number of predictions is {len(prediction)}')
 # map predict results to image, dish name
 #---------------------------------------------------------------
 
-dish_images = sorted(glob.glob(os.path.join(export_path + '/*.jpg')),
-                     key=lambda s: int(s.split('/')[-1].split('.')[0]))
+dish_images = list(
+    sorted(glob.glob(os.path.join(export_path + '/*.jpg')),
+           key=lambda s: int(s.split('/')[-1].split('.')[0])))
 
 dish_names = [
     'BAK CHOR MEE', 'CHICKEN RICE', 'CHILLI CRAB', 'HOKKIEN MEE', 'KAYA TOAST'
@@ -170,7 +171,7 @@ if len(prediction) > 0:
         dishes_predicted_list.append(predicted_dish)
 
 for image in dish_images:
-    dishes_predicted_list[int('dish_images')] = image
+    dishes_predicted_list['dish_images'] = image
 
 # display results
 #---------------------------------------------------------------
