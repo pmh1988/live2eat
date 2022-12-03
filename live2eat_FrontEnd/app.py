@@ -182,7 +182,7 @@ st.title("Dishes detected")
 
 cols = st.columns(len(dishes_predicted_list))
 
-for dic in dishes_predicted_list:
+for i, dic in enumerate(dishes_predicted_list):
 
     image_opened = Image.open(dic['dish_images'])
     cols[i].image(image_opened)
