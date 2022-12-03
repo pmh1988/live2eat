@@ -44,7 +44,6 @@ def capture_images(food_times, cam, raw_data_dir):
 
             # Release all space and windows once done
         cam.release()
-        # cv2.destroyAllWindows()
 
 
 def create_dish_list(sorted_dishes):
@@ -110,4 +109,3 @@ def median_dish(file_labels, raw_data_dir, export_path):
         cv2.imwrite(os.path.join(export_path, f'{time}.0.jpg'), image)
         print(f'{time}.0.jpg' + ' written to' +
               os.path.join(export_path, f'{time}.0.jpg'))
-

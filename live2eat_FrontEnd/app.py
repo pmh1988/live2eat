@@ -63,7 +63,6 @@ st.video(video_URL, format="video/mp4", start_time=0)
 
 if option:
     st.subheader('Video Analysis in Progress........')
-
 else:
     st.subheader('Please select a video')
 
@@ -139,13 +138,14 @@ median_dish(file_labels, raw_data_dir, export_path)
 #---------------------------------------------------------------
 
 prediction = predict()
-prediction = prediction[0][0]
+prediction = prediction[0]
 print(f'number of predictions is {len(prediction)}')
 
 # map predict results to image, dish name
 #---------------------------------------------------------------
 
-dish_images = sorted(glob.glob(export_path + "/*.jpg"),
+dish_images = sorted(glob.glob(
+    os.path.join(os.getcwd() + '/data/predict_images' + '/*.jpg')),
                      key=lambda s: int(s.split('/')[-1].split('.')[0]))
 
 dish_names = [
@@ -182,7 +182,7 @@ cols = st.columns(len(dishes_predicted_list))
 
 for i, dic in enumerate(dishes_predicted_list):
 
-    image_opened = Image.open(dic['dish_images'])
+    image_opened = Image.open(dic['dish_images']).load()
     cols[i].image(image_opened)
     cols[i].text(dic['dish_names'])
     cols[i].text(dic['dish_calories'])
