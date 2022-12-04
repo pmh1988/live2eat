@@ -7,6 +7,7 @@ import numpy as np
 import pickle
 import glob
 import os
+import streamlit as st
 
 from typing import Optional, Sequence
 from datetime import timedelta
@@ -17,6 +18,7 @@ from google.cloud import videointelligence as vi
 from google.cloud import storage
 
 
+@st.cache(allow_output_mutation=True)
 def video_uri(option, credentials):
     video_client = vi.VideoIntelligenceServiceClient(credentials=credentials)
     if option == 'Video 1':
@@ -33,6 +35,7 @@ def video_uri(option, credentials):
     return video_uri
 
 
+@st.cache(allow_output_mutation=True)
 def download_video_opencv(video_uri, credentials):
 
     last_path = os.sep.join(os.path.normpath(video_uri).split(os.sep)[-2:])

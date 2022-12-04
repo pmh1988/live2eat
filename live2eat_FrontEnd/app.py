@@ -218,10 +218,7 @@ for i, (predicted_dishes, predicted_calories,
     cols[i].text(predicted_dishes)
     cols[i].text(predicted_calories)
     select = cols[i].checkbox('Select', key=i)
-    if select:
-        pass
-    else:
-        pass
+
 
 
 st.markdown('#')

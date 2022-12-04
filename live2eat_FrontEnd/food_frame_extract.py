@@ -7,6 +7,7 @@ import numpy as np
 import pickle
 import glob
 import os
+import streamlit as st
 
 from typing import Optional, Sequence
 from datetime import timedelta
@@ -17,6 +18,7 @@ from google.cloud import videointelligence as vi
 from google.cloud import storage
 
 
+@st.cache(allow_output_mutation=True)
 def track_objects(
     video_uri: str,
     credentials,
@@ -37,6 +39,7 @@ def track_objects(
     return operation.result().annotation_results[0]
 
 
+@st.cache(allow_output_mutation=True)
 def print_object_frames(results: vi.VideoAnnotationResults,
                         entity_id: str,
                         min_confidence: float = 0.7):

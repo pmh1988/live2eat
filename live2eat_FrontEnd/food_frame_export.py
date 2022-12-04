@@ -7,6 +7,7 @@ import numpy as np
 import pickle
 import glob
 import os
+import streamlit as st
 
 from typing import Optional, Sequence
 from datetime import timedelta
@@ -17,6 +18,7 @@ from google.cloud import videointelligence as vi
 from google.cloud import storage
 
 
+@st.cache(allow_output_mutation=True)
 def capture_images(food_times, cam, raw_data_dir):
 
     for f in os.listdir(raw_data_dir):
@@ -46,6 +48,7 @@ def capture_images(food_times, cam, raw_data_dir):
         cam.release()
 
 
+@st.cache(allow_output_mutation=True)
 def create_dish_list(sorted_dishes):
     dishes = []
     print(f'length of sorted_dish: {len(sorted_dishes)}')
@@ -57,6 +60,7 @@ def create_dish_list(sorted_dishes):
     return dishes
 
 
+@st.cache(allow_output_mutation=True)
 def create_resized_dish_list(dishes):
     resized_dishes = []
 
@@ -72,6 +76,7 @@ def create_resized_dish_list(dishes):
     return resized_dishes
 
 
+@st.cache(allow_output_mutation=True)
 def create_reshaped_dish_list(resized_dishes):
     img = resized_dishes[0]
     resized_dishes_2d = np.array(resized_dishes).reshape(
@@ -79,6 +84,7 @@ def create_reshaped_dish_list(resized_dishes):
     return resized_dishes_2d
 
 
+@st.cache(allow_output_mutation=True)
 def dish_clustering_dataframe(resized_dishes_2d, sorted_dishes):
     K = 4
     kmeans = KMeans(n_clusters=K, random_state=0)
@@ -93,6 +99,7 @@ def dish_clustering_dataframe(resized_dishes_2d, sorted_dishes):
     return file_labels
 
 
+@st.cache(allow_output_mutation=True)
 def median_dish(file_labels, raw_data_dir, export_path):
 
     for f in os.listdir(export_path):

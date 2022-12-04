@@ -2,8 +2,10 @@ import os
 from keras.models import load_model
 from tensorflow.keras.applications.vgg16 import preprocess_input
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+import streamlit as st
 
 
+@st.cache(allow_output_mutation=True)
 def predict():
 
     model = load_model(os.path.join(os.getcwd(), 'my_model5.h5'))
