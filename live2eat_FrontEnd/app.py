@@ -158,7 +158,6 @@ dish_calories = [
     '511 calories', '607 calories', '1560 calories', '617 calories',
     '196 calories']
 
-
 predicted_dishes = dish_names[prediction_argmax]
 print(f'the list of predicted_dishes is {predicted_dishes}')
 

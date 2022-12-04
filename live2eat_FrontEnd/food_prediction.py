@@ -6,7 +6,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 def predict():
 
-    model = load_model(os.path.join(os.getcwd(), 'my_model2.h5'))
+    model = load_model(os.path.join(os.getcwd(), 'my_model5.h5'))
     test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
     predict_data = test_datagen.flow_from_directory(os.path.join(
         os.getcwd(), 'data'),
