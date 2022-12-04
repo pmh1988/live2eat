@@ -185,7 +185,7 @@ print(
 
 # Progress Bar
 #---------------------------------------------------------------
-'Starting a long computation...'
+'Analysing your food videos...'
 
 # Add a placeholder
 latest_iteration = st.empty()
@@ -197,8 +197,6 @@ for i in range(100):
     bar.progress(i + 1)
     time.sleep(0.1)
 '...and now we\'re done!'
-# else:
-#     st.subheader('Please select a video')
 
 st.markdown('#')
 
@@ -218,8 +216,6 @@ for i, (predicted_dishes, predicted_calories,
     cols[i].text(predicted_dishes)
     cols[i].text(predicted_calories)
     select = cols[i].checkbox('Select', key=i)
-
-
 
 st.markdown('#')
 st.markdown('#')
