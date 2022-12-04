@@ -32,6 +32,19 @@ st.set_page_config(
     layout="centered",  # wide
     initial_sidebar_state="auto")  # collapsed
 
+# Page Background
+#---------------------------------------------------------------
+# CSS = """
+# h1 {
+#     color: red;
+# }
+# .stApp {
+#     background-image: url(https://images.unsplash.com/photo-1488900128323-21503983a07e);
+#     background-size: cover;
+# }
+# """
+# st.write(f'<style>{CSS}</style>', unsafe_allow_html=True)
+
 # page header
 #---------------------------------------------------------------
 '''
@@ -61,12 +74,30 @@ st.markdown('#')
 
 st.video(video_URL, format="video/mp4", start_time=0)
 
-if option:
-    st.subheader('Video Analysis in Progress........')
-else:
-    st.subheader('Please select a video')
+# # Progress Bar
+# #---------------------------------------------------------------
+# if option:
+#     st.subheader('Video Analysis in Progress........')
+#     import time
 
-st.markdown('#')
+#     'Starting a long computation...'
+
+#     # Add a placeholder
+#     latest_iteration = st.empty()
+#     bar = st.progress(0)
+
+#     for i in range(100):
+#         # Update the progress bar with each iteration.
+#         latest_iteration.text(f'Iteration {i+1}')
+#         bar.progress(i + 1)
+#         time.sleep(0.1)
+
+#     '...and now we\'re done!'    
+# # else:
+# #     st.subheader('Please select a video')
+
+# st.markdown('#')
+
 
 # specify cloud credentials
 #---------------------------------------------------------------
@@ -171,6 +202,30 @@ dishes_predicted_list = list(
     zip(predicted_dishes, predicted_calories, dish_images))
 print(
     f'the fill list of predicted dishes to display is {dishes_predicted_list}')
+
+# Progress Bar
+#---------------------------------------------------------------
+if option:
+    st.subheader('Video Analysis in Progress........')
+    import time
+
+    'Starting a long computation...'
+
+    # Add a placeholder
+    latest_iteration = st.empty()
+    bar = st.progress(0)
+
+    for i in range(100):
+        # Update the progress bar with each iteration.
+        latest_iteration.text(f'Iteration {i+1}')
+        bar.progress(i + 1)
+        time.sleep(0.1)
+
+    '...and now we\'re done!'    
+# else:
+#     st.subheader('Please select a video')
+
+st.markdown('#')
 
 # display results
 #---------------------------------------------------------------
