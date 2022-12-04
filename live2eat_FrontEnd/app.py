@@ -12,6 +12,7 @@ import numpy as np
 import pandas as pd
 import requests
 import streamlit as st
+import time
 
 from food_frame_export import *
 from food_frame_extract import *
@@ -80,7 +81,6 @@ else:
     st.subheader('Please select a video')
 
 st.markdown('#')
-
 
 # specify cloud credentials
 #---------------------------------------------------------------
@@ -157,12 +157,8 @@ prediction_argmax = prediction.argmax(1)
 
 print(f'the filepaths of predicted dish_images is {dish_images}')
 
-# map predict results to image, dish name
+# map predict results to image, dish name, calories
 #---------------------------------------------------------------
-
-# dish_images = list(
-#     sorted(glob.glob(os.path.join(export_path + '/*.jpg')),
-#            key=lambda s: int(s.split('/')[-1].split('.')[0])))
 
 dish_names = np.array([
     'BAK CHOR MEE', 'CHICKEN RICE', 'CHILLI CRAB', 'HOKKIEN MEE', 'KAYA TOAST'
@@ -170,7 +166,8 @@ dish_names = np.array([
 
 dish_calories = [
     '511 calories', '607 calories', '1560 calories', '617 calories',
-    '196 calories']
+    '196 calories'
+]
 
 predicted_dishes = dish_names[prediction_argmax]
 print(f'the list of predicted_dishes is {predicted_dishes}')
@@ -188,8 +185,6 @@ print(
 
 # Progress Bar
 #---------------------------------------------------------------
-import time
-
 'Starting a long computation...'
 
 # Add a placeholder
@@ -201,8 +196,7 @@ for i in range(100):
     latest_iteration.text(f'Iteration {i+1}')
     bar.progress(i + 1)
     time.sleep(0.1)
-
-'...and now we\'re done!'    
+'...and now we\'re done!'
 # else:
 #     st.subheader('Please select a video')
 
@@ -223,7 +217,12 @@ for i, (predicted_dishes, predicted_calories,
     cols[i].image(image_opened)
     cols[i].text(predicted_dishes)
     cols[i].text(predicted_calories)
-    cols[i].checkbox('Select', key=i)
+    select = cols[i].checkbox('Select', key=i)
+    if select:
+        pass
+    else:
+        pass
+
 
 st.markdown('#')
 st.markdown('#')
@@ -232,4 +231,4 @@ st.markdown('#')
 #---------------------------------------------------------------
 
 if st.button('Submit'):
-    st.success("Your choice has been submitted!")
+    st.success("Your food has been logged!")
