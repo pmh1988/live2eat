@@ -74,29 +74,29 @@ st.markdown('#')
 
 st.video(video_URL, format="video/mp4", start_time=0)
 
-# Progress Bar
-#---------------------------------------------------------------
-if option:
-    st.subheader('Video Analysis in Progress........')
-    import time
+# # Progress Bar
+# #---------------------------------------------------------------
+# if option:
+#     st.subheader('Video Analysis in Progress........')
+#     import time
 
-    'Starting a long computation...'
+#     'Starting a long computation...'
 
-    # Add a placeholder
-    latest_iteration = st.empty()
-    bar = st.progress(0)
+#     # Add a placeholder
+#     latest_iteration = st.empty()
+#     bar = st.progress(0)
 
-    for i in range(100):
-        # Update the progress bar with each iteration.
-        latest_iteration.text(f'Iteration {i+1}')
-        bar.progress(i + 1)
-        time.sleep(0.2)
+#     for i in range(100):
+#         # Update the progress bar with each iteration.
+#         latest_iteration.text(f'Iteration {i+1}')
+#         bar.progress(i + 1)
+#         time.sleep(0.1)
 
-    '...and now we\'re done!'    
-# else:
-#     st.subheader('Please select a video')
+#     '...and now we\'re done!'    
+# # else:
+# #     st.subheader('Please select a video')
 
-st.markdown('#')
+# st.markdown('#')
 
 
 # specify cloud credentials
@@ -203,6 +203,30 @@ dishes_predicted_list = list(
     zip(predicted_dishes, predicted_calories, dish_images))
 print(
     f'the fill list of predicted dishes to display is {dishes_predicted_list}')
+
+# Progress Bar
+#---------------------------------------------------------------
+if option:
+    st.subheader('Video Analysis in Progress........')
+    import time
+
+    'Starting a long computation...'
+
+    # Add a placeholder
+    latest_iteration = st.empty()
+    bar = st.progress(0)
+
+    for i in range(100):
+        # Update the progress bar with each iteration.
+        latest_iteration.text(f'Iteration {i+1}')
+        bar.progress(i + 1)
+        time.sleep(0.1)
+
+    '...and now we\'re done!'    
+# else:
+#     st.subheader('Please select a video')
+
+st.markdown('#')
 
 # display results
 #---------------------------------------------------------------
