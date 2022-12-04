@@ -34,16 +34,16 @@ st.set_page_config(
 
 # Page Background
 #---------------------------------------------------------------
-CSS = """
-h1 {
-    color: red;
-}
-.stApp {
-    background-image: url(https://images.unsplash.com/photo-1488900128323-21503983a07e);
-    background-size: cover;
-}
-"""
-st.write(f'<style>{CSS}</style>', unsafe_allow_html=True)
+# CSS = """
+# h1 {
+#     color: red;
+# }
+# .stApp {
+#     background-image: url(https://images.unsplash.com/photo-1488900128323-21503983a07e);
+#     background-size: cover;
+# }
+# """
+# st.write(f'<style>{CSS}</style>', unsafe_allow_html=True)
 
 # page header
 #---------------------------------------------------------------
@@ -90,7 +90,7 @@ if option:
         # Update the progress bar with each iteration.
         latest_iteration.text(f'Iteration {i+1}')
         bar.progress(i + 1)
-        time.sleep(0.1)
+        time.sleep(0.2)
 
     '...and now we\'re done!'    
 # else:
