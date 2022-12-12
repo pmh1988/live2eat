@@ -8,7 +8,9 @@ import pickle
 import glob
 import os
 import streamlit as st
+import collections
 
+from sklearn.cluster import DBSCAN
 from typing import Optional, Sequence
 from datetime import timedelta
 from google.oauth2 import service_account
@@ -80,18 +82,77 @@ def create_reshaped_dish_list(resized_dishes):
     return resized_dishes_2d
 
 
-def dish_clustering_dataframe(resized_dishes_2d, sorted_dishes):
-    K = 4
-    kmeans = KMeans(n_clusters=K, random_state=0)
-    clusters = kmeans.fit(resized_dishes_2d.astype('uint8'))
+def dish_clustering_dataframe_dbscan(resized_dishes_2d, sorted_dishes):
+
+    def check_purity(data, eps, noise_threshold=0.05):
+        clusters = DBSCAN(eps=eps, min_samples=2).fit(data)
+        return collections.Counter(clusters.labels_)[-1] / len(
+            clusters.labels_) < noise_threshold
+
+    # tweaked from https://algo.monster/problems/binary_search_boundary
+    def find_boundary(data):
+        eps_range = range(10000, 50000, 1000)
+        left, right = 0, len(eps_range) - 1
+        boundary_index = -1
+
+        while left <= right:
+            mid = (left + right) // 2
+            if check_purity(data, eps=eps_range[mid]):
+                boundary_index = mid
+                right = mid - 1
+            else:
+                left = mid + 1
+
+        if boundary_index == -1:
+            boundary_index = len(
+                eps_range
+            ) - 1  # get largest eps so all values go in same cluster
+
+        return eps_range[boundary_index]
+
+    eps_threshold = find_boundary(resized_dishes_2d)
+    print(f'{eps_threshold = }')
+
+    clusters = DBSCAN(eps=eps_threshold, min_samples=2).fit(resized_dishes_2d)
+
     file_labels = pd.DataFrame({
         'files': sorted_dishes,
         'labels': clusters.labels_
     })
-    file_labels['time'] = file_labels.files.str.split('/').str[-1].str.split(
-        '.').str[0]
 
+    file_labels['time'] = (file_labels.files.str.split('/').str[-1].str.rsplit(
+        '.', n=1).str[0].astype(float))
     return file_labels
+
+
+# # Hanqi improved dish_clustering_dataframe
+# def dish_clustering_dataframe(resized_dishes_2d, sorted_dishes):
+#     K = 8
+#     kmeans = KMeans(n_clusters=K, random_state=0)
+#     clusters = kmeans.fit(resized_dishes_2d.astype('uint8'))
+#     file_labels = pd.DataFrame({
+#         'files': sorted_dishes,
+#         'labels': clusters.labels_
+#     })
+#     # file_labels['time'] = file_labels.files.str.split('/').str[-1].str.split(
+#     #     '.').str[0]
+#     file_labels['time'] = (file_labels.files.str.split('/').str[-1].str.rsplit(
+#         '.', n=1).str[0].astype(float))
+#     return file_labels
+
+## Hanqi original dish_clustering_dataframe
+# def dish_clustering_dataframe(resized_dishes_2d, sorted_dishes):
+#     K = 4
+#     kmeans = KMeans(n_clusters=K, random_state=0)
+#     clusters = kmeans.fit(resized_dishes_2d.astype('uint8'))
+#     file_labels = pd.DataFrame({
+#         'files': sorted_dishes,
+#         'labels': clusters.labels_
+#     })
+#     file_labels['time'] = file_labels.files.str.split('/').str[-1].str.split(
+#         '.').str[0]
+
+#     return file_labels
 
 
 def median_dish(file_labels, raw_data_dir, export_path):
