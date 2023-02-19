@@ -1,4 +1,7 @@
 # Project Overview: Live2Eat
+<p align="center">
+  <img src="/readme_images/project_overview.png" alt="Alt text" width="600" height="300">
+</p>
 Live2Eat is an innovative calorie-tracking application that uses food image detection to automate the process of logging meals. The app is designed to be seamlessly integrated with a user's social media content, allowing them to easily track their food intake throughout the day. One of the key features of Live2Eat is its ability to detect local dishes, making it an ideal tool for travelers and foodies who want to keep track of their diet while exploring new cuisines.
 
 The project was developed by a team of three members during a two-week program at Le Wagon Institute. Our team was inspired to create Live2Eat in response to the common pain points that hinder health and wellness programs from becoming permanent lifestyle changes. We recognized that traditional calorie-tracking methods can be time-consuming and cumbersome, making it difficult for people to stay on track with their goals.
@@ -9,7 +12,9 @@ Overall, Live2Eat represents a significant innovation in the field of calorie tr
 
 
 # Data Sources
-
+<p align="center">
+  <img src="/readme_images/Sources.png" alt="Alt text" width="600" height="300">
+</p>
 The images used in Live2Eat were sourced from a variety of locations, including local food blogs such as DanielFooddairy. Due to the unique nature of local delicacies, we found that images of these foods were not readily available in large quantities online. To address this issue, we leveraged a variety of techniques to generate a diverse set of food images for our dataset.
 
 Firstly, we used Canva, a graphic design platform, to create multiple variations of the same image. This approach allowed us to create a more comprehensive and diverse dataset by generating different angles, lighting, and colors for each image.
@@ -19,7 +24,9 @@ Additionally, we used the Keras image data generator to further augment the imag
 Overall, the use of local food blogs, Canva, and the Keras image data generator allowed us to create a robust and comprehensive dataset for Live2Eat. Our team is confident that this diverse and well-curated dataset will help to ensure accurate and reliable food image recognition within the app.
 
 # Methods and Techniques
-
+<p align="center">
+  <img src="/readme_images/Techniques.png" alt="Alt text" width="600" height="300">
+</p>
 An overview of the methodologies, algorithms, and models used in the project.
 
 # Results
