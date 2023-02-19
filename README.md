@@ -51,25 +51,29 @@ To improve the accuracy of the model, the team could consider training it on a l
 
 Despite the shortfall in accuracy, the team's live2eat project is a promising proof-of-concept that demonstrates the potential of using image classification and calorie tracking to help users make healthier choices. With further refinement and improvement, this technology could help people around the world to improve their health and wellness.
 
-# Code Organization
-
-An overview of the project's file structure and any important code files, including how to run the code and any dependencies.
-```bash
-##   e.g. if group is "{group}" and project_name is "live2eat"
-git remote add origin git@github.com:{group}/live2eat.git
-git push -u origin master
-git push -u origin --tags
-```
-
 # Acknowledgments
+<p align="center">
+  <img src="/readme_images/acknowledgement.png" alt="Alt text" width="500" height="300">
+</p>
 
-A section to acknowledge any contributors, data sources, or other individuals or organizations that contributed to the project.
+Would like to thank the team members, Shayann Seet and Perry Goh, for their dedication and hard work in completing the project within the challenging time frame of 2 weeks. Despite having only started coding a month before the project, the team was able to accomplish a great deal.
+
+The team would also like to express their gratitude to their course instructors, Hanqi and Solomon, for their guidance and support throughout the project. Their help and expertise were instrumental in the successful completion of the project.
 
 # Future Work
 
-Suggestions for future work and improvements that could be made to the project.
+There are several areas that the team could focus on to further develop and improve the project.
+
+Firstly, the team could continue to work on the project to improve its accuracy by training the model on a larger dataset that includes more local cuisine. They could also consider using more advanced techniques such as fine-tuning the pre-trained VGG16 model or using other pre-trained models that are better suited for the specific task of food image classification.
+
+Secondly, the team could expand the range of food choices, the team coudl consider incorporating dishes from diverse cultures, such as Indian and Malay crusine. This would require gathering a larger dataset and potentially using more advanced models to accurately classify the diverse range of food images.
+
+Thirdly, the team could deploy the project in a web application or even a mobile application. This would make the technology more accessible to users and enable them to easily track their calorie intake and make healthier food choices.
 
 # Contact Information
 
-A way for people to contact the project owner or contributors if they have questions or feedback.
-Check for live2eat in github.com/{group}. If your project is not set please add it:
+For anyone who has questions or feedback regarding the live2eat project. They can be reached at the following:
+
+Email: poongmenghuang.63@gmail.com
+
+LinkedIn: https://www.linkedin.com/in/poongmenghuang
