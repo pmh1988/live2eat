@@ -58,7 +58,7 @@ Despite the shortfall in accuracy, the team's live2eat project is a promising pr
 
 Would like to thank the team for their dedication and hard work in completing the project within the challenging time frame of 2 weeks. Despite having only started coding a month before the project, the team was able to accomplish a great deal.
 
-The team would also like to express their gratitude to their course instructors, Hanqi and Solomon, for their guidance and support throughout the project. Their help and expertise were instrumental in the successful completion of the project.
+The team would also like to express their gratitude to their course instructors, for their guidance and support throughout the project. Their help and expertise were instrumental in the successful completion of the project.
 
 # Future Work
 
