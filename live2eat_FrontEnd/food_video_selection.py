@@ -22,15 +22,15 @@ from google.cloud import storage
 def video_uri(option, credentials):
     video_client = vi.VideoIntelligenceServiceClient(credentials=credentials)
     if option == 'Video 1':
-        video_uri = 'gs://live2eat-bootcamp/Dish Videos/Bak Chor Mee.mp4'
+        video_uri = 'Ba Chor Mee.mp4'
     if option == 'Video 2':
-        video_uri = 'gs://live2eat-bootcamp/Dish Videos/Hokkien Mee.mp4'
+        video_uri = 'Hokkien Mee.mp4'
     if option == 'Video 3':
-        video_uri = 'gs://live2eat-bootcamp/Dish Videos/Kaya Toast.mp4'
+        video_uri = 'Kaya Toast.mp4'
     if option == 'Video 5':
-        video_uri = 'gs://live2eat-bootcamp/Dish Videos/Chicken Rice.mp4'
+        video_uri = 'Chicken Rice.mp4'
     elif option == 'Video 4':
-        video_uri = 'gs://live2eat-bootcamp/Dish Videos/Chilli Crab.mp4'
+        video_uri = 'Chilli Crab.mp4'
 
     return video_uri
 
@@ -40,7 +40,7 @@ def download_video_opencv(video_uri, credentials):
 
     last_path = os.sep.join(os.path.normpath(video_uri).split(os.sep)[-2:])
     bucket = storage.Client(
-        credentials=credentials).bucket('live2eat-bootcamp')
+        credentials=credentials).bucket('live2eat')
     blob = bucket.blob(last_path)
     download_path = os.path.join(os.getcwd(), 'video.mp4')
     print('Video downloaded to: ', download_path)
