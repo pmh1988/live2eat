@@ -25,13 +25,31 @@ Overall, the use of local food blogs, Canva, and the Keras image data generator 
 
 # Methods and Techniques
 <p align="center">
-  <img src="/readme_images/Techniques.png" alt="Alt text" width="600" height="300">
+  <img src="/readme_images/Tech_Stack.png" alt="Alt text" width="600" height="300">
 </p>
-An overview of the methodologies, algorithms, and models used in the project.
+
+Preprocessing: The team preprocessed the dataset by splitting it into train and test sets. They used techniques such as data augmentation and normalization to improve the performance of the model.
+
+Convolutional Neural Networks: The team used convolutional neural networks (CNNs) to train the image classification model. They focused on using a simple architecture that consisted of convolution layers with 3x3 filters, a stride of 1, and same padding. They also used maxpool layers with 2x2 filters and a stride of 2. This helped to reduce the number of hyperparameters and made the model easier to train.
+
+Transfer Learning: To create the base model, the team used a pre-trained VGG16 model, which is a CNN that has been trained on a large dataset of images. Since the VGG16 model was already trained on a similar domain and task, the team could use its pre-trained network to improve the performance of their model.
+
+Google Video Intelligence API: The team used the Google Video Intelligence API to capture images based on the model and store the files in the respective folder. They also used the API to deduplicate the captured images.
+
+Input Calorie Calculator: The team created an input calorie calculator to display the user's total calorie intake based on the images captured by the model. This helped users to track their calorie intake and make healthier choices.
+
+Deployment: Finally, the team deployed the model and input calorie calculator on Streamlit, a web application framework that allows users to interact with the model and input calorie calculator through a user-friendly interface. This made it easier for users to use the model and track their calorie intake.
 
 # Results
+<p align="center">
+  <img src="/readme_images/result.jpg" alt="Alt text" width="500" height="400">
+</p>
 
-A summary of the project's results, including any visualizations, tables, or other outputs.
+The team achieved an accuracy of 85% in image classification. However, the team acknowledged that this result was a shortfall because the model was only trained on a limited number of local cuisine due to time constraints. Therefore, the model may not be able to accurately classify all types of food images.
+
+To improve the accuracy of the model, the team could consider training it on a larger dataset that includes more local cuisine. They could also consider using more advanced techniques such as fine-tuning the pre-trained VGG16 model or using other pre-trained models that are better suited for the specific task of food image classification.
+
+Despite the shortfall in accuracy, the team's live2eat project is a promising proof-of-concept that demonstrates the potential of using image classification and calorie tracking to help users make healthier choices. With further refinement and improvement, this technology could help people around the world to improve their health and wellness.
 
 # Code Organization
 
