@@ -8,3 +8,4 @@ raw_data/
 .env
 lewagon-livetoeat-d53331dc5e74.json
 secrets.toml
+.streamlit
