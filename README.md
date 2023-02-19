@@ -72,7 +72,7 @@ Thirdly, the team could deploy the project in a web application or even a mobile
 
 # Contact Information
 
-For anyone who has questions or feedback regarding the live2eat project. They can be reached at the following:
+For anyone who has questions or feedback regarding the live2eat project. I can be reached at the following:
 
 Email: poongmenghuang.63@gmail.com
 
