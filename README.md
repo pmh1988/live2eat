@@ -56,7 +56,7 @@ Despite the shortfall in accuracy, the team's live2eat project is a promising pr
   <img src="/readme_images/acknowledgement.png" alt="Alt text" width="500" height="300">
 </p>
 
-Would like to thank the team members, Shayann Seet and Perry Goh, for their dedication and hard work in completing the project within the challenging time frame of 2 weeks. Despite having only started coding a month before the project, the team was able to accomplish a great deal.
+Would like to thank the team for their dedication and hard work in completing the project within the challenging time frame of 2 weeks. Despite having only started coding a month before the project, the team was able to accomplish a great deal.
 
 The team would also like to express their gratitude to their course instructors, Hanqi and Solomon, for their guidance and support throughout the project. Their help and expertise were instrumental in the successful completion of the project.
 
