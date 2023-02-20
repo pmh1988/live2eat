@@ -34,11 +34,9 @@ Convolutional Neural Networks: The team used convolutional neural networks (CNNs
 
 Transfer Learning: To create the base model, the team used a pre-trained VGG16 model, which is a CNN that has been trained on a large dataset of images. Since the VGG16 model was already trained on a similar domain and task, the team could use its pre-trained network to improve the performance of their model.
 
-The team used the VideoIntelligenceServiceClient() object to interact with the Video Intelligence API. They set the features as Object Tracking and built an AnnotateVideoRequest() by providing input uri, video context, and features. The video was processed using annotate_video() and the annotation results were returned.
+Google Video Intelligence API:The team used the VideoIntelligenceServiceClient() object to interact with the Video Intelligence API. They set the features as Object Tracking and built an AnnotateVideoRequest() by providing input uri, video context, and features. The video was processed using annotate_video() and the annotation results were returned.To extract the food images, the team created a print_object_frames() method that takes in the results which hold the annotation results and the entity_id that refers to the food images.
 
-To extract the food images, the team created a print_object_frames() method that takes in the results which hold the annotation results and the entity_id that refers to the food images.
-
-To remove duplicate image frames, the team used the 'KMeans' algorithm with an integer value of 'K' set to 4. The algorithm found the specified number of clusters and assigned a corresponding label or cluster index to each input image.
+KMeans Algorithm: To remove duplicate image frames, the team used the 'KMeans' algorithm with an integer value of 'K' set to 4. The algorithm found the specified number of clusters and assigned a corresponding label or cluster index to each input image.
 
 Input Calorie Calculator: The team created an input calorie calculator to display the user's total calorie intake based on the images captured by the model. This helped users to track their calorie intake and make healthier choices.
 
@@ -70,7 +68,7 @@ There are several areas that the team could focus on to further develop and impr
 
 Firstly, the team could continue to work on the project to improve its accuracy by training the model on a larger dataset that includes more local cuisine. They could also consider using more advanced techniques such as fine-tuning the pre-trained VGG16 model or using other pre-trained models that are better suited for the specific task of food image classification.
 
-Secondly, the team could expand the range of food choices, the team coudl consider incorporating dishes from diverse cultures, such as Indian and Malay crusine. This would require gathering a larger dataset and potentially using more advanced models to accurately classify the diverse range of food images.
+Secondly, the team could expand the range of food choices, the team could consider incorporating dishes from diverse cultures, such as Indian and Malay crusine. This would require gathering a larger dataset and potentially using more advanced models to accurately classify the diverse range of food images.
 
 Thirdly, the team could deploy the project in a web application or even a mobile application. This would make the technology more accessible to users and enable them to easily track their calorie intake and make healthier food choices.
 
