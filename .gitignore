@@ -6,6 +6,6 @@ raw_data/
 *.csv
 **/__pycache__/
 .env
-lewagon-livetoeat-d53331dc5e74.json
+wagon-bootcamp-368904-f0c75c9ad806.json
 secrets.toml
 .streamlit
